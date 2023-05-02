@@ -5,9 +5,23 @@ import { IconButton } from "../../Buttons/IconButton";
 import { Input } from "../Input";
 import Home from "../../../assets/Home.svg";
 import Eye from "../../../assets/Eye.svg";
+import { useContext } from "react";
+import { IRegisterFormData, UserContext } from "../../../providers/userContext";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerFormSchema } from "./registerFormSchema";
 
-export function RegisterForm() {
-  /* IMPORTS E LÓGICAS REFERENTES AO REGISTER FORM: ZOD, HOOK RESOLVER, USERCONTEXT, ETC */
+export function RegisterForm() {  
+  const { createUser } = useContext(UserContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IRegisterFormData>({
+    resolver: zodResolver(registerFormSchema),
+  });
+
   return (
     <StyledForm className="formContainer">
       <span className="formHeader">
@@ -17,26 +31,25 @@ export function RegisterForm() {
           alt="Botão da Homepage"
           size="3.125rem"
           button={false}
+          id="1"
         />
       </span>
-      <form
-      /* onSubmit={REGISTER FUNCTION AQUI} */
-      >
+      <form onSubmit={handleSubmit(createUser)}>
         <Input
           id="name"
           label="Nome"
           type="text"
           placeholder="Digite seu nome..."
-          // error={errors.name?.message}
-          // {...register('name')}
+          error={errors.name?.message}
+          {...register('name')}
         />
         <Input
           id="email"
           label="E-mail"
           type="text"
           placeholder="Digite seu e-mail..."
-          // error={errors.email?.message}
-          // {...register('email')}
+          error={errors.email?.message}
+          {...register('email')}
         />
         <Input
           id="password"
@@ -44,8 +57,8 @@ export function RegisterForm() {
           type="password"
           placeholder="Digite sua senha..."
           Eye={Eye}
-          // error={errors.password?.message}
-          // {...register('password')}
+          error={errors.password?.message}
+          {...register('password')}
         />
         <Input
           id="confirm"
@@ -53,8 +66,8 @@ export function RegisterForm() {
           type="password"
           placeholder="Confirme sua senha..."
           Eye={Eye}
-          // error={errors.confirm?.message}
-          // {...register('confirm')}
+          error={errors.confirm?.message}
+          {...register('confirm')}
         />
         <FormButton text="Cadastre-se" />
       </form>
