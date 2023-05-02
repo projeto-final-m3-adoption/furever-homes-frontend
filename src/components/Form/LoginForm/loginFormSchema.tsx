@@ -7,3 +7,7 @@ export const loginSchema = z.object({
     .email({ message: "O e-mail é obrigatório" }),
   password: z.string().min(1, { message: "A senha é obrigatória" }),
 });
+
+export type TLoginFormValues = z.infer<typeof loginSchema>;
+
+//não finalizado
