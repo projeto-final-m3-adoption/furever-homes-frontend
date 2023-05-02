@@ -1,12 +1,12 @@
 import { StyledHeader } from "./style";
 import { IconButton } from "../Buttons/IconButton";
-import MenuIcon from "../../assets/MenuIcon-cropped.svg";
-import LoginIcon from "../../assets/LoginIcon-cropped.svg";
-import RegisterIcon from "../../assets/RegisterIcon-cropped.svg";
+import MenuIcon from "../../assets/MenuIcon.svg";
+import LoginIcon from "../../assets/LoginIcon.svg";
+import RegisterIcon from "../../assets/RegisterIcon.svg";
 import SearchIcon from "../../assets/SearchIcon.svg";
 import SearchInput from "../../assets/SearchInput.svg";
 import LogoutIcon from "../../assets/LogoutIcon.svg";
-import RegisterPetIcon from "../../assets/RegisterPetIcon-cropped.svg";
+import RegisterPetIcon from "../../assets/RegisterPetIcon.svg";
 
 export function Header() {
   const user = false;
