@@ -63,6 +63,7 @@ html, body, div, span, applet, object, iframe,
   }
 
   }
+  
   button {
 	  cursor: pointer;
   }
