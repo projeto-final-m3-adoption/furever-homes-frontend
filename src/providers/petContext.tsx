@@ -32,7 +32,7 @@ export function PetProvider({ children }: IIChildren) {
       const response = await api.get("/pet");
       setPetFull(response.data);
     } catch (error) {
-      console.log("deu erro");
+      console.log(error);
     }
   }
   const [petFull, setPetFull] = useState<IIPet[]>([]);
