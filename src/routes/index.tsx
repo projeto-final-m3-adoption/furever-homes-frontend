@@ -3,11 +3,11 @@ import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 
 export function MainRoutes() {
-	return (
-		<Routes>
-			<Route path="/login" element={<Login />} />
-			<Route path="/register" element={<Register />} />
-			<Route path="/" element={<Navigate to="/login" />} />
-		</Routes>
-	);
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<Navigate to="/login" />} />
+    </Routes>
+  );
 }
