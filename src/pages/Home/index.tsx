@@ -11,13 +11,9 @@ export function Home() {
   return (
     <>
       <Header />
-
       <StyledHome>
-      <Carousel/>
-      <section>
-          {/* <div className="swiperCards"></div> */}
-          {/* <CardList /> */}
-          {/* <footer className="homeFooter"></footer> */}
+        <Carousel />
+        <section className="animal-list-container">
           <img src={dogIcon} alt="" className="dogIcon" />
           <img src={catIcon} alt="" className="catIcon" />
           <img src={rabbitIcon} alt="" className="rabbitIcon" />
@@ -25,7 +21,7 @@ export function Home() {
             <img src={resetButton} alt="resetButton" className="buttonReset" />
           </div>
         </section>
-        <ul>
+        <ul className="pets-list">
           <PetList />
         </ul>
       </StyledHome>
