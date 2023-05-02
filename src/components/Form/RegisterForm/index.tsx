@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerFormSchema";
 
-export function RegisterForm() {  
+export function RegisterForm() {
   const { createUser } = useContext(UserContext);
 
   const {
@@ -41,7 +41,7 @@ export function RegisterForm() {
           type="text"
           placeholder="Digite seu nome..."
           error={errors.name?.message}
-          {...register('name')}
+          {...register("name")}
         />
         <Input
           id="email"
@@ -49,7 +49,7 @@ export function RegisterForm() {
           type="text"
           placeholder="Digite seu e-mail..."
           error={errors.email?.message}
-          {...register('email')}
+          {...register("email")}
         />
         <Input
           id="password"
@@ -58,7 +58,7 @@ export function RegisterForm() {
           placeholder="Digite sua senha..."
           Eye={Eye}
           error={errors.password?.message}
-          {...register('password')}
+          {...register("password")}
         />
         <Input
           id="confirm"
@@ -67,7 +67,7 @@ export function RegisterForm() {
           placeholder="Confirme sua senha..."
           Eye={Eye}
           error={errors.confirm?.message}
-          {...register('confirm')}
+          {...register("confirm")}
         />
         <FormButton text="Cadastre-se" />
       </form>

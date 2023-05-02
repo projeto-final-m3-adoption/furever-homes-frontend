@@ -11,16 +11,11 @@ export const registerFormSchema = z
       .regex(/(?=.*?[a-z])/, "É necessário ao menos uma letra minúscula")
       .regex(/(?=.*?[0-9])/, "É necessário pelo menos um número")
       .regex(/(\W|_)/, "Deve conter no mínimo um caractere especial"),
-    confirm: z
-      .string()
-      .min(7, "Senha deve conter pelo menos 7 caracteres"),
+    confirm: z.string().min(7, "Senha deve conter pelo menos 7 caracteres"),
   })
-  .refine(
-    ({ password, confirm }) => password === confirm,
-    {
-      message: "A confirmação e a senha devem ser iguais.",
-      path: ["confirm"],
-    }
-  );
+  .refine(({ password, confirm }) => password === confirm, {
+    message: "A confirmação e a senha devem ser iguais.",
+    path: ["confirm"],
+  });
 
 export type TRegisterFormValues = z.infer<typeof registerFormSchema>;
