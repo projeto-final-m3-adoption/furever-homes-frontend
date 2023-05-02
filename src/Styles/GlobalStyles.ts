@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -26,6 +26,7 @@ html, body, div, span, applet, object, iframe,
     outline: none;
     list-style: none;
   }
+
   :root {
   --primary: #C291FF;
   --secondary: #9A48FF;
@@ -53,14 +54,16 @@ html, body, div, span, applet, object, iframe,
     overflow-x: hidden;
     color: var(--grey-6);
   }
+
   #root {
     width: 100%;
     height: 100vh;
     margin: 0;
     display: flex;
   }
+
   }
   button {
-	cursor: pointer;
+	  cursor: pointer;
   }
   `;
