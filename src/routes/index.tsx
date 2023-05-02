@@ -12,4 +12,3 @@ export function MainRoutes() {
 			<Route path="*" element={<PageNotFound />} />
 		</Routes>
 	);
-}
