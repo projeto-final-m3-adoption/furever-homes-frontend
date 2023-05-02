@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledHome = styled.main`
-  width: 90vw;
+
+  padding: 2% 8%;
   height: 350px;
   background: #fcfbfe;
   border: 1px solid #e0e0e0;

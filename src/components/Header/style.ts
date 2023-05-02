@@ -7,7 +7,6 @@ export const StyledHeader = styled.header`
   gap: 1.125rem;
   width: 100%;
   height: 9rem;
-  position: fixed;
   top: 0;
 
   .headerNavbar {

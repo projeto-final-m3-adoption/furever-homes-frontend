@@ -1,3 +1,4 @@
+import { Carousel } from "../../components/Carousel";
 import { Header } from "../../components/Header";
 import { StyledHome } from "./style";
 import dogIcon from "../../assets/DogFilterIcon.svg";
@@ -12,7 +13,8 @@ export function Home() {
       <Header />
 
       <StyledHome>
-        <section>
+      <Carousel/>
+      <section>
           {/* <div className="swiperCards"></div> */}
           {/* <CardList /> */}
           {/* <footer className="homeFooter"></footer> */}
