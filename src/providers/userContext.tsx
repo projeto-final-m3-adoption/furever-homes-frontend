@@ -45,10 +45,7 @@ export function UserProvider({ children }: IChildren) {
     delete formData.confirm;
 
     try {
-      const response = await api.post("/register", formData);
-      setUser(response.data.user);
-      localStorage.setItem("@FUREVERHOMES@TOKEN", response.data.accessToken);
-      localStorage.setItem("@FUREVERHOMES@ID", response.data.user.id);
+      await api.post("/register", formData);
       navigate("/login");
       toast.success("Conta criada com sucesso");
     } catch (error) {
@@ -64,13 +61,10 @@ export function UserProvider({ children }: IChildren) {
         api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
         setUser(response.data.user);
         localStorage.setItem(
-          "@FUREVERHOMES@TOKEN",
+          "@FHtoken",
           JSON.stringify(response.data.accessToken)
         );
-        localStorage.setItem(
-          "@FUREVERHOMES@ID",
-          JSON.stringify(response.data.user.id)
-        );
+        localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
         toast.success("Usuário logado com sucesso");
         navigate("/");
       }
