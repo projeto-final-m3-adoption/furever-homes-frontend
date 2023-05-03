@@ -13,6 +13,7 @@ export interface IUserContext {
   user: null | IUser;
   setUser: React.Dispatch<React.SetStateAction<null>>;
   createUser: SubmitHandler<IRegisterFormData>;
+  logIn: SubmitHandler<ILoginFormData>;
 }
 
 export interface IUser {
@@ -27,6 +28,11 @@ export interface IRegisterFormData {
   email: string;
   password: string;
   confirm?: string;
+}
+
+export interface ILoginFormData {
+  email: string;
+  password: string;
 }
 
 export const UserContext = createContext({} as IUserContext);
@@ -50,8 +56,32 @@ export function UserProvider({ children }: IChildren) {
       toast.error(currentError.response?.data);
     }
   };
+
+  const logIn = async (formData: ILoginFormData) => {
+    try {
+      const response = await api.post("/login", formData);
+      if (response.data.accessToken) {
+        api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
+        setUser(response.data.user);
+        localStorage.setItem(
+          "@FUREVERHOMES@TOKEN",
+          JSON.stringify(response.data.accessToken)
+        );
+        localStorage.setItem(
+          "@FUREVERHOMES@ID",
+          JSON.stringify(response.data.user.id)
+        );
+        toast.success("Usuário logado com sucesso");
+        navigate("/");
+      }
+    } catch (error) {
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ createUser, user, setUser }}>
+    <UserContext.Provider value={{ createUser, logIn, user, setUser }}>
       {children}
     </UserContext.Provider>
   );
