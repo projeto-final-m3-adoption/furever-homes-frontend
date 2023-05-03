@@ -4,7 +4,6 @@ import { StyledPetList } from "./style";
 
 export function PetList() {
   const { petFull } = useContext(petContext);
-  console.log(petFull);
   return (
     <>
       {petFull.map((pet) => {
