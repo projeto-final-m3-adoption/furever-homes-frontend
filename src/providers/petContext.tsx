@@ -59,6 +59,7 @@ export function PetProvider() {
     );
 
     petsFilter.length === 0 ? toast.error("Nenhum pet encontrado") : setPetsSearchFilter(petsFilter);
+    petsFilter.length === 0 ? setPetsSearchFilter(petFull) : setPetsSearchFilter(petsFilter);
     setTextSearch("");
   }
 
