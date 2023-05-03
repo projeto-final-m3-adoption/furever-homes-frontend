@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
-import { StyledIconButton } from "./style";
+import { StyledIconButton, StyledLink } from "./style";
 
-export function IconButton({ button, img, alt, size, id }) {
+export interface IIconButtonProps {
+  id?: string; 
+  button: boolean;
+  img: string;
+  alt: string;
+  size: string;
+}
+
+export function IconButton({ button, img, alt, size, id }:IIconButtonProps) {
   return (
     <StyledIconButton size={size} className="roundButtonContainer">
       {button ? (
@@ -9,7 +17,7 @@ export function IconButton({ button, img, alt, size, id }) {
           <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
         </button>
       ) : (
-        <Link
+        <StyledLink
           to={
             alt === "Registro" ? "/register" : alt === "Login" ? "/login" : "/"
           }
@@ -18,7 +26,7 @@ export function IconButton({ button, img, alt, size, id }) {
           size={size}
         >
           <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
-        </Link>
+        </StyledLink>
       )}
     </StyledIconButton>
   );

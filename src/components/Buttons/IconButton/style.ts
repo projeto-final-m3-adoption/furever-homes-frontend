@@ -1,6 +1,15 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const StyledIconButton = styled.div`
+export interface IStyledIconButton {
+  size?: string;
+}
+
+export interface IStyledLink {
+  size?: string;
+}
+
+export const StyledIconButton = styled.div<IStyledIconButton>`
   .roundButton {
     display: flex;
     justify-content: center;
@@ -38,3 +47,13 @@ export const StyledIconButton = styled.div`
     }
   }
 `;
+
+export const StyledLink = styled(Link)<IStyledLink>`
+/* AJUSTAR ESTILIZAÇÃO */
+@media (min-width: 768.1px) {
+  .roundButton {
+      width: ${({ size }) => size};
+      height: ${({ size }) => size};
+    }
+}
+`
