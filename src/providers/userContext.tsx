@@ -14,6 +14,7 @@ export interface IUserContext {
   setUser: React.Dispatch<React.SetStateAction<null>>;
   createUser: SubmitHandler<IRegisterFormData>;
   logIn: SubmitHandler<ILoginFormData>;
+  logOut: () => void;
 }
 
 export interface IUser {
@@ -80,8 +81,15 @@ export function UserProvider({ children }: IChildren) {
     }
   };
 
+  const logOut = () => {
+    localStorage.removeItem("@FUREVERHOMES@TOKEN");
+    localStorage.removeItem("@FUREVERHOMES@ID");
+    toast.success("Deslogado com sucesso");
+    navigate("/");
+  };
+
   return (
-    <UserContext.Provider value={{ createUser, logIn, user, setUser }}>
+    <UserContext.Provider value={{ createUser, logIn, logOut, user, setUser }}>
       {children}
     </UserContext.Provider>
   );

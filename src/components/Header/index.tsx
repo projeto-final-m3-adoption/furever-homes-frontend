@@ -7,9 +7,11 @@ import SearchIcon from "../../assets/SearchIcon.svg";
 import SearchInput from "../../assets/SearchInput.svg";
 import LogoutIcon from "../../assets/LogoutIcon.svg";
 import RegisterPetIcon from "../../assets/RegisterPetIcon.svg";
+import { useContext } from "react";
+import { UserContext } from "../../providers/userContext";
 
 export function Header() {
-  const user = false;
+  const { user, logOut } = useContext(UserContext);
 
   return (
     <StyledHeader>
@@ -62,8 +64,7 @@ export function Header() {
                     size={"4.5rem"}
                   />
                 </>
-              ) : null}
-              {user ? (
+              ) : (
                 <>
                   <IconButton
                     id="registerPetButton"
@@ -78,9 +79,10 @@ export function Header() {
                     img={LogoutIcon}
                     alt={"Logout"}
                     size={"4.5rem"}
+                    onClick={logOut}
                   />
                 </>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
