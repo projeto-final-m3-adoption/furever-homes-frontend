@@ -6,6 +6,7 @@ import catIcon from "../../assets/CatFilterIcon.svg";
 import rabbitIcon from "../../assets/RabbitFilterIcon.svg";
 import resetButton from "../../assets/ResetFilter.svg";
 import { PetList } from "../../components/PetList";
+import { Footer } from "../../components/Footer";
 
 export function Home() {
   return (
@@ -25,6 +26,7 @@ export function Home() {
           <PetList />
         </ul>
       </StyledHome>
+      <Footer />
     </>
   );
 }
