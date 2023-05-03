@@ -49,13 +49,4 @@ export const StyledHome = styled.main`
       }
     }
   }
-
-  .pets-list {
-    display: flex;
-    padding-left: 1rem;
-    padding-top: 1rem;
-    overflow-y: scroll;
-    gap: 1rem;
-    padding-bottom: 1rem;
-  }
 `;

@@ -66,4 +66,28 @@ html, body, div, span, applet, object, iframe,
   button {
 	  cursor: pointer;
   }
+  
+  .pet-container-salmon {
+    background-color: #efa48b;
+  }
+
+  .pet-container-purple {
+    background-color: #8a4fff;
+  }
+
+  .pet-container-blue {
+    background-color: #2eb3ce;
+  }
+
+  .pet-container-green {
+    background-color: #9ee493;
+  }
+
+  .pet-container-red {
+    background-color: #f9627d;
+  }
+
+  .pet-container-yellow {
+    background-color: #ffc759;
+  }
   `;
