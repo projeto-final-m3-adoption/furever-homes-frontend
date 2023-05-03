@@ -42,7 +42,7 @@ export function Carousel() {
         items={items}
         autoPlay={true}
         infinite={true}
-        autoPlayInterval={2000}
+        autoPlayInterval={5000}
         disableButtonsControls={true}
       />
     </StyledCarousel>
