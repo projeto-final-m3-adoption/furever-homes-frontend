@@ -5,7 +5,7 @@ export const StyledPetList = styled.ul`
   overflow-y: hidden;
   overflow-x: auto;
   display: flex;
-  gap: 40px;
+  gap: 2.5rem;
 
   /* li:hover {
     border: 2px solid var(--color-gray-1);
@@ -28,7 +28,7 @@ export const StyledPetList = styled.ul`
   }
 
   @media (min-width: 768.1px) {
-    height: 500px;
+    height: 31.25rem;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;

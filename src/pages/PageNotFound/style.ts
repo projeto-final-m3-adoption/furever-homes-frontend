@@ -33,13 +33,13 @@ export const StyledPageNotFound = styled.main`
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 2.25rem;
     }
 
     a {
-      font-size: 18px;
+      font-size: 1.125rem;
       color: inherit;
-      padding: 12px 0;
+      padding: 0.75rem 0;
 
       :hover {
         color: var(--secondary);
