@@ -3,6 +3,7 @@ import { SubmitHandler } from "react-hook-form";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 export interface IChildren {
   children: React.ReactNode;
@@ -45,7 +46,8 @@ export function UserProvider({ children }: IChildren) {
       navigate("/login");
       toast.success("Conta criada com sucesso");
     } catch (error) {
-      console.log(error);
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
     }
   };
   return (
