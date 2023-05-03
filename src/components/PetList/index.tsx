@@ -3,10 +3,11 @@ import { petContext } from "../../providers/petContext";
 import { StyledPetList } from "./style";
 
 export function PetList() {
-  const { petFull } = useContext(petContext);
+  const { petFull, petsFilter, petsSearch } = useContext(petContext);
+  const newList = petsSearch !== "" ? petsFilter : petFull;
   return (
     <>
-      {petFull.map((pet) => {
+      {newList.map((pet) => {
         return (
           <StyledPetList key={pet.id}>
             <img src={pet.img} alt="imagem do pet" />
