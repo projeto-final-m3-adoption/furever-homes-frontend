@@ -26,7 +26,7 @@ export function Home() {
           <PetList />
         </ul>
       </StyledHome>
-      <Footer />
+      <Footer />      
     </>
   );
 }
