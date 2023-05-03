@@ -23,18 +23,21 @@ export const StyledHome = styled.main`
       background: #c2f4d0;
       border-radius: 32px;
       padding: 1px 2px;
+      cursor: pointer;
     }
 
     .dogIcon {
       background: #c2ebff;
       border-radius: 32px;
       padding: 2px;
+      cursor: pointer;
     }
 
     .rabbitIcon {
       background: #faa6ae;
       border-radius: 32px;
       padding: 2px;
+      cursor: pointer;
     }
 
     .containerReset {
@@ -42,6 +45,7 @@ export const StyledHome = styled.main`
         background: #c291ff;
         border-radius: 32px;
         padding: 2px;
+        cursor: pointer;
       }
     }
   }
