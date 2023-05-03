@@ -2,12 +2,6 @@ import styled from "styled-components";
 
 export const StyledHome = styled.main`
   padding: 2% 8%;
-  /* height: 350px;
-  background: #fcfbfe;
-  border: 1px solid #e0e0e0;
-  border-radius: 30px;
-  margin-left: 1rem;
-  margin-top: 1rem; */
 
   .animal-list-container {
     margin-left: 1rem;
