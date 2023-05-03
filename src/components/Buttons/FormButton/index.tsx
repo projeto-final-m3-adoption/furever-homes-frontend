@@ -1,5 +1,9 @@
 import { StyledFormButton } from "./style";
 
-export function FormButton({ text }) {
+export interface IFormButtonProps {
+  text: string;
+}
+
+export function FormButton({ text }: IFormButtonProps) {
   return <StyledFormButton>{text}</StyledFormButton>;
 }

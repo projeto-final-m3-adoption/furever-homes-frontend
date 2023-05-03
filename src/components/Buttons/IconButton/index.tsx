@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
-import { StyledIconButton } from "./style";
+import { StyledIconButton, StyledLink } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/userContext";
 
-export function IconButton({ button, img, alt, size, id }) {
+export interface IIconButtonProps {
+  id?: string;
+  button: boolean;
+  img: string;
+  alt: string;
+  size: string;
+}
+
+export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
   const { logOut } = useContext(UserContext);
 
   return (
@@ -19,7 +27,7 @@ export function IconButton({ button, img, alt, size, id }) {
           <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
         </button>
       ) : (
-        <Link
+        <StyledLink
           to={
             alt === "Registro" ? "/register" : alt === "Login" ? "/login" : "/"
           }
@@ -28,7 +36,7 @@ export function IconButton({ button, img, alt, size, id }) {
           size={size}
         >
           <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
-        </Link>
+        </StyledLink>
       )}
     </StyledIconButton>
   );
