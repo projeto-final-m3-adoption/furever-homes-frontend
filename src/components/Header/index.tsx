@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/userContext";
 
 export function Header() {
-  const { user, logOut } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <StyledHeader>
@@ -79,7 +79,6 @@ export function Header() {
                     img={LogoutIcon}
                     alt={"Logout"}
                     size={"4.5rem"}
-                    onClick={logOut}
                   />
                 </>
               )}
