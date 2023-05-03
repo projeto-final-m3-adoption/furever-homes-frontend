@@ -62,7 +62,6 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     gap: 0.25rem;
-    width: 92%;
     min-width: 16.25rem;
     height: 3rem;
     padding: 0 1.125rem;
@@ -88,6 +87,7 @@ export const StyledHeader = styled.header`
 
       ::placeholder {
         color: var(--grey-3);
+        font-size: 0.75rem;
       }
     }
 
