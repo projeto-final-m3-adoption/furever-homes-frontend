@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const StyledCarousel = styled.div`
   .carousel-container {
     width: 100%;
-    height: 92px;
-    border-radius: 20px;
-    padding: 24px;
+    height: 5.75rem;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,17 +25,17 @@ export const StyledCarousel = styled.div`
 
   .carousel-paragraph {
     font-family: "Bebas Neue", cursive;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
   }
 
   .alice-carousel__dots {
-    margin: 8px 3px 5px;
+    margin: 0.5rem 0.188rem 0.313rem;
   }
 
   @media (min-width: 768.1px) {
     .carousel-paragraph {
-      font-size: 30px;
+      font-size: 1.875rem;
     }
   }
 `;
