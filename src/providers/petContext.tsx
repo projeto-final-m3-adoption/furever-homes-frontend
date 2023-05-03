@@ -58,13 +58,19 @@ export function PetProvider() {
         pet.age.toLowerCase().includes(textSearch.toLowerCase())
     );
 
-    petsFilter.length === 0 ? toast.error("Nenhum pet encontrado") : setPetsSearchFilter(petsFilter);
-    petsFilter.length === 0 ? setPetsSearchFilter(petFull) : setPetsSearchFilter(petsFilter);
+    petsFilter.length === 0
+      ? toast.error("Nenhum pet encontrado")
+      : setPetsSearchFilter(petsFilter);
+    petsFilter.length === 0
+      ? setPetsSearchFilter(petFull)
+      : setPetsSearchFilter(petsFilter);
     setTextSearch("");
   }
 
   function filterButtons(icon: string) {
-    const petsFilter = petFull.filter((pet) => pet.type.toLowerCase().includes(icon.toLowerCase()));
+    const petsFilter = petFull.filter((pet) =>
+      pet.type.toLowerCase().includes(icon.toLowerCase())
+    );
     setPetsSearchFilter(petsFilter);
   }
 

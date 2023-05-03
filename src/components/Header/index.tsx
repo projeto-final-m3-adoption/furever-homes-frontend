@@ -34,15 +34,39 @@ export function Header() {
                 <img src={SearchInput} alt="Pesquisar" />
               </button>
             </form>
-            <IconButton id="searchIcon" button={true} img={SearchIcon} alt={"Pesquisar"} size={"4.5rem"} />
+            <IconButton
+              id="searchIcon"
+              button={true}
+              img={SearchIcon}
+              alt={"Pesquisar"}
+              size={"4.5rem"}
+            />
           </div>
           <div className="dropdownMenuOptions">
-            <IconButton id="menuButton" button={true} img={MenuIcon} alt={"Abrir menu"} size={"2.5rem"} />
+            <IconButton
+              id="menuButton"
+              button={true}
+              img={MenuIcon}
+              alt={"Abrir menu"}
+              size={"2.5rem"}
+            />
             <div className="menuButtonOptions">
               {!user ? (
                 <>
-                  <IconButton id="registerButton" button={false} img={RegisterIcon} alt={"Registro"} size={"4.5rem"} />
-                  <IconButton id="loginButton" button={false} img={LoginIcon} alt={"Login"} size={"4.5rem"} />
+                  <IconButton
+                    id="registerButton"
+                    button={false}
+                    img={RegisterIcon}
+                    alt={"Registro"}
+                    size={"4.5rem"}
+                  />
+                  <IconButton
+                    id="loginButton"
+                    button={false}
+                    img={LoginIcon}
+                    alt={"Login"}
+                    size={"4.5rem"}
+                  />
                 </>
               ) : (
                 <>
@@ -53,7 +77,13 @@ export function Header() {
                     alt={"Registro do pet"}
                     size={"4.5rem"}
                   />
-                  <IconButton id="logoutButton" button={true} img={LogoutIcon} alt={"Logout"} size={"4.5rem"} />
+                  <IconButton
+                    id="logoutButton"
+                    button={true}
+                    img={LogoutIcon}
+                    alt={"Logout"}
+                    size={"4.5rem"}
+                  />
                 </>
               )}
             </div>

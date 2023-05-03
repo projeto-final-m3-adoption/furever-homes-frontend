@@ -18,11 +18,31 @@ export function Home() {
       <StyledHome>
         <Carousel />
         <section className="animal-list-container">
-          <img src={dogIcon} alt="" className="dogIcon" onClick={() => filterButtons("cachorro")} />
-          <img src={catIcon} alt="" className="catIcon" onClick={() => filterButtons("gato")} />
-          <img src={rabbitIcon} alt="" className="rabbitIcon" onClick={() => filterButtons("outros")} />
+          <img
+            src={dogIcon}
+            alt=""
+            className="dogIcon"
+            onClick={() => filterButtons("cachorro")}
+          />
+          <img
+            src={catIcon}
+            alt=""
+            className="catIcon"
+            onClick={() => filterButtons("gato")}
+          />
+          <img
+            src={rabbitIcon}
+            alt=""
+            className="rabbitIcon"
+            onClick={() => filterButtons("outros")}
+          />
           <div className="containerReset">
-            <img src={resetButton} alt="resetButton" className="buttonReset" onClick={() => filterButtons("")} />
+            <img
+              src={resetButton}
+              alt="resetButton"
+              className="buttonReset"
+              onClick={() => filterButtons("")}
+            />
           </div>
         </section>
         <PetList />
