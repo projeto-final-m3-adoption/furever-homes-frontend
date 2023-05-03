@@ -2,14 +2,18 @@ import { ForwardedRef, InputHTMLAttributes, useState } from "react";
 import { forwardRef } from "react";
 import { StyledInputContainer } from "./style";
 
-export interface IInputComponentProps extends InputHTMLAttributes<HTMLInputElement>{
+export interface IInputComponentProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
   error: string | undefined;
-  Eye?: string;  
+  Eye?: string;
 }
 
-function InputComponent({ id, label, error, Eye, ...rest }:IInputComponentProps, ref: ForwardedRef<HTMLInputElement>) {
+function InputComponent(
+  { id, label, error, Eye, ...rest }: IInputComponentProps,
+  ref: ForwardedRef<HTMLInputElement>
+) {
   const [visiblePassword, setVisiblePassword] = useState(false);
 
   return (

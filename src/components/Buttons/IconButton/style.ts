@@ -49,11 +49,11 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
 `;
 
 export const StyledLink = styled(Link)<IStyledLink>`
-/* AJUSTAR ESTILIZAÇÃO */
-@media (min-width: 768.1px) {
-  .roundButton {
+  /* AJUSTAR ESTILIZAÇÃO */
+  @media (min-width: 768.1px) {
+    .roundButton {
       width: ${({ size }) => size};
       height: ${({ size }) => size};
     }
-}
-`
+  }
+`;
