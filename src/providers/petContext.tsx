@@ -24,9 +24,9 @@ interface IIPetFull {
   textSearch: string;
   setTextSearch: React.Dispatch<React.SetStateAction<string>>;
   submitSearch: (event: React.FormEvent) => void;
-
   petsSearchFilter: IIPet[];
   setPetsSearchFilter: React.Dispatch<React.SetStateAction<IIPet[]>>;
+  filterButtons: (icon: string) => void;
 }
 export const petContext = createContext({} as IIPetFull);
 
@@ -63,6 +63,11 @@ export function PetProvider() {
     setTextSearch("");
   }
 
+  function filterButtons(icon: string) {
+    const petsFilter = petFull.filter((pet) => pet.type.toLowerCase().includes(icon.toLowerCase()));
+    setPetsSearchFilter(petsFilter);
+  }
+
   return (
     <petContext.Provider
       value={{
@@ -74,6 +79,7 @@ export function PetProvider() {
         submitSearch,
         petsSearchFilter,
         setPetsSearchFilter,
+        filterButtons,
       }}
     >
       <Outlet />
