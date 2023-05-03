@@ -5,9 +5,23 @@ import { IconButton } from "../../Buttons/IconButton";
 import { Input } from "../Input";
 import Home from "../../../assets/Home.svg";
 import Eye from "../../../assets/Eye.svg";
+import { useContext } from "react";
+import { ILoginFormData, UserContext } from "../../../providers/userContext";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { loginSchema } from "./loginFormSchema";
 
 export function LoginForm() {
-  /* IMPORTS E LÓGICAS REFERENTES AO LOGIN FORM: ZOD, HOOK RESOLVER, USERCONTEXT, ETC */
+  const { logIn } = useContext(UserContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
   return (
     <StyledForm className="formContainer">
       <span className="formHeader">
@@ -17,18 +31,17 @@ export function LoginForm() {
           alt="Botão da Homepage"
           size="3.125rem"
           button={false}
+          id="1"
         />
       </span>
-      <form
-      /* onSubmit={LOGIN FUNCTION AQUI} */
-      >
+      <form onSubmit={handleSubmit(logIn)}>
         <Input
           id="email"
           label="E-mail"
           type="text"
           placeholder="Digite seu e-mail..."
-          // error={errors.email?.message}
-          // {...register('email')}
+          {...register("email")}
+          error={errors.email?.message}
         />
         <Input
           id="password"
@@ -36,8 +49,8 @@ export function LoginForm() {
           type="password"
           placeholder="Digite sua senha..."
           Eye={Eye}
-          // error={errors.password?.message}
-          // {...register('password')}
+          {...register("password")}
+          error={errors.password?.message}
         />
         <FormButton text="Login" />
       </form>

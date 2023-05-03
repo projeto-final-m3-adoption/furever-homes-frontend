@@ -9,5 +9,3 @@ export const loginSchema = z.object({
 });
 
 export type TLoginFormValues = z.infer<typeof loginSchema>;
-
-//não finalizado
