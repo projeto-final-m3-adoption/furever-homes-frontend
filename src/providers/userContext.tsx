@@ -76,8 +76,8 @@ export function UserProvider({ children }: IChildren) {
   };
 
   const logOut = () => {
-    localStorage.removeItem("@FUREVERHOMES@TOKEN");
-    localStorage.removeItem("@FUREVERHOMES@ID");
+    localStorage.removeItem("@FHtoken");
+    localStorage.removeItem("@FHid");
     setUser(null);
     toast.success("Deslogado com sucesso");
     navigate("/");
