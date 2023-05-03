@@ -22,9 +22,7 @@ export function Home() {
             <img src={resetButton} alt="resetButton" className="buttonReset" />
           </div>
         </section>
-        <ul className="pets-list">
-          <PetList />
-        </ul>
+        <PetList />
       </StyledHome>
       <Footer />
     </>

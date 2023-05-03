@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { Outlet } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export interface IIPet {
   name: string;
@@ -22,23 +23,18 @@ interface IIPetFull {
   loadPets: () => void;
   textSearch: string;
   setTextSearch: React.Dispatch<React.SetStateAction<string>>;
-  petsFilter: IIPet[];
   submitSearch: (event: React.FormEvent) => void;
-  petsSearch: string;
-  setPetsSearch: React.Dispatch<React.SetStateAction<string>>;
+
+  petsSearchFilter: IIPet[];
+  setPetsSearchFilter: React.Dispatch<React.SetStateAction<IIPet[]>>;
 }
 export const petContext = createContext({} as IIPetFull);
 
 export function PetProvider() {
   const [petFull, setPetFull] = useState<IIPet[]>([]);
   const [textSearch, setTextSearch] = useState("");
-  const [petsSearch, setPetsSearch] = useState("");
 
-  const petsFilter = petFull.filter(
-    (pet) =>
-      pet.name.toLowerCase().includes(petsSearch.toLowerCase()) ||
-      pet.age.toLowerCase().includes(petsSearch.toLowerCase())
-  );
+  const [petsSearchFilter, setPetsSearchFilter] = useState<IIPet[]>([]);
 
   async function loadPets() {
     try {
@@ -55,9 +51,15 @@ export function PetProvider() {
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault();
-    setPetsSearch(textSearch);
+
+    const petsFilter = petFull.filter(
+      (pet) =>
+        pet.name.toLowerCase().includes(textSearch.toLowerCase()) ||
+        pet.age.toLowerCase().includes(textSearch.toLowerCase())
+    );
+
+    petsFilter.length === 0 ? toast.error("Nenhum pet encontrado") : setPetsSearchFilter(petsFilter);
     setTextSearch("");
-    console.log(petsSearch);
   }
 
   return (
@@ -68,10 +70,9 @@ export function PetProvider() {
         loadPets,
         textSearch,
         setTextSearch,
-        petsFilter,
         submitSearch,
-        petsSearch,
-        setPetsSearch,
+        petsSearchFilter,
+        setPetsSearchFilter,
       }}
     >
       <Outlet />
