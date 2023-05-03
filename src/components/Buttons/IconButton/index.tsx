@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { StyledIconButton, StyledLink } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/userContext";
