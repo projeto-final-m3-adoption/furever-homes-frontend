@@ -6,7 +6,6 @@ export const StyledPageNotFound = styled.main`
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem 0;
 
   .pageNotFoundImages {
     .desktopImg {
