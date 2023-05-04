@@ -10,48 +10,48 @@ import { Footer } from "../../components/Footer";
 import { IconButton } from "../../components/Buttons/IconButton";
 
 export function Home() {
-	return (
-		<>
-			<Header />
-			<StyledHome>
-				<Carousel />
-				<section className="petListContainer">
-					<div className="petListHeader">
-						<div className="petListFilters">
-							<IconButton
-								button={true}
-								img={dogIcon}
-								alt={"Filtrar por cachorros"}
-								size={"4rem"}
-								id={"dogIcon"}
-							/>
-							<IconButton
-								button={true}
-								img={catIcon}
-								alt={"Filtrar por gatos"}
-								size={"4rem"}
-								id={"catIcon"}
-							/>
-							<IconButton
-								button={true}
-								img={rabbitIcon}
-								alt={"Filtrar por outros"}
-								size={"4rem"}
-								id={"rabbitIcon"}
-							/>
-						</div>
-						<IconButton
-							button={true}
-							img={resetButton}
-							alt={"Resetar filtro"}
-							size={"4rem"}
-							id={"buttonReset"}
-						/>
-					</div>
-					<PetList />
-				</section>
-			</StyledHome>
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <StyledHome>
+        <Carousel />
+        <section className="petListContainer">
+          <div className="petListHeader">
+            <div className="petListFilters">
+              <IconButton
+                button={true}
+                img={dogIcon}
+                alt={"Filtrar por cachorros"}
+                size={"4rem"}
+                id={"dogIcon"}
+              />
+              <IconButton
+                button={true}
+                img={catIcon}
+                alt={"Filtrar por gatos"}
+                size={"4rem"}
+                id={"catIcon"}
+              />
+              <IconButton
+                button={true}
+                img={rabbitIcon}
+                alt={"Filtrar por outros"}
+                size={"4rem"}
+                id={"rabbitIcon"}
+              />
+            </div>
+            <IconButton
+              button={true}
+              img={resetButton}
+              alt={"Resetar filtro"}
+              size={"4rem"}
+              id={"buttonReset"}
+            />
+          </div>
+          <PetList />
+        </section>
+      </StyledHome>
+      <Footer />
+    </>
+  );
 }
