@@ -16,6 +16,11 @@ export const StyledFooter = styled.footer`
     gap: 0.313rem;
   }
 
+  .footer-paragraph > a {
+    text-decoration: none;
+	color: var(--grey-6);
+  }
+
   .footer-heart {
     height: 0.75rem;
     width: auto;
