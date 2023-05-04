@@ -13,8 +13,8 @@ export interface IIPet {
   description: string;
   adress: string;
   isAdopted: boolean;
-  userId: number;
-  id: number;
+  userId: any;
+  id: any;
 }
 
 interface IIPetFull {
@@ -22,6 +22,10 @@ interface IIPetFull {
   setPetFull: React.Dispatch<React.SetStateAction<IIPet[]>>;
   loadPets: () => void;
   createNewPet: SubmitHandler<IRegisterNewPetFormData>;
+  adoptPet: (
+    formData: IIPet,
+    petId: number | string | undefined | null
+  ) => Promise<void>;
 }
 
 export interface IRegisterNewPetFormData {
@@ -36,6 +40,11 @@ export interface IRegisterNewPetFormData {
   isAdopted?: boolean;
   userId?: number;
   id?: number;
+}
+
+export interface IAdoptPet {
+  formData: IIPet;
+  userId: string | undefined | null | number;
 }
 
 export const petContext = createContext({} as IIPetFull);
@@ -70,9 +79,35 @@ export function PetProvider() {
     }
   };
 
+  const adoptPet = async (
+    formData: IIPet,
+    petId: number | string | undefined | null
+  ) => {
+    let token = localStorage.getItem("@FUREVERHOMES@TOKEN");
+    if (token) {
+      token = JSON.parse(token);
+    }
+
+    try {
+      await api.patch(
+        `/pet/${petId}`,
+        {
+          isAdopted: true,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <petContext.Provider
-      value={{ petFull, setPetFull, loadPets, createNewPet }}
+      value={{ petFull, setPetFull, loadPets, createNewPet, adoptPet }}
     >
       <Outlet />
     </petContext.Provider>
