@@ -25,15 +25,21 @@ export function PetCard({ pet, index }: IPetCardProps) {
   return (
     <StyledPetCard
       onClick={() => {
-        setPetDetailsModal(true);
-        setPetObject(pet);
+        if (!pet.isAdopted) {
+          setPetDetailsModal(true);
+          setPetObject(pet);
+        }
       }}
     >
       <div
-        className="pet-img-container"
+        className={`pet-img-container ${pet.isAdopted ? "grey-scale" : ""}`}
         style={{ backgroundImage: `url(${pet.img})` }}
       ></div>
-      <div className={`pet-description-container ${setColor(index)}`}>
+      <div
+        className={`pet-description-container ${
+          pet.isAdopted ? "grey-scale-description" : setColor(index)
+        }`}
+      >
         <p className="pet-description">{pet.name}</p>
         <p className="pet-description">{pet.age}</p>
       </div>

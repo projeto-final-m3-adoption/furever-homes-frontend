@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledPetCard = styled.div`
   height: 21.25rem;
-  width: 16.25rem;
+  width: 230px;
   border-radius: var(--radius-30);
   overflow: hidden;
   cursor: pointer;
@@ -26,6 +26,17 @@ export const StyledPetCard = styled.div`
     font-size: 1.125rem;
     color: var(--white);
     text-transform: capitalize;
+  }
+
+  .grey-scale {
+    background-color: #fff;
+    background-blend-mode: luminosity;
+    cursor: default;
+  }
+
+  .grey-scale-description {
+    background-color: grey;
+    cursor: default;
   }
 
   @media (min-width: 880px) {
