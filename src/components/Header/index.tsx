@@ -13,7 +13,7 @@ import { petContext } from "../../providers/petContext";
 
 export function Header() {
   const { user } = useContext(UserContext);
-  const { setTextSearch, submitSearch, textSearch, setOpenModalNewPet } = useContext(petContext);
+  const { setTextSearch, submitSearch, textSearch } = useContext(petContext);
 
   return (
     <StyledHeader>
