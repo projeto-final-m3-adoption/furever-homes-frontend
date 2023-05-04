@@ -13,51 +13,51 @@ import { petContext } from "../../providers/petContext";
 import { PetDetailsModal } from "../../components/Modal/PetDetailsModal";
 
 export function Home() {
-	const { petDetailsModal } = useContext(petContext);
+  const { petDetailsModal } = useContext(petContext);
 
-	return (
-		<>
-			<Header />
-			<StyledHome>
-				<Carousel />
-				<section className="petListContainer">
-					<div className="petListHeader">
-						<div className="petListFilters">
-							<IconButton
-								button={true}
-								img={dogIcon}
-								alt={"Filtrar por cachorros"}
-								size={"4rem"}
-								id={"dogIcon"}
-							/>
-							<IconButton
-								button={true}
-								img={catIcon}
-								alt={"Filtrar por gatos"}
-								size={"4rem"}
-								id={"catIcon"}
-							/>
-							<IconButton
-								button={true}
-								img={rabbitIcon}
-								alt={"Filtrar por outros"}
-								size={"4rem"}
-								id={"rabbitIcon"}
-							/>
-						</div>
-						<IconButton
-							button={true}
-							img={resetButton}
-							alt={"Resetar filtro"}
-							size={"4rem"}
-							id={"buttonReset"}
-						/>
-					</div>
-					<PetList />
-				</section>
-			</StyledHome>
-			<Footer />
-			{petDetailsModal ? <PetDetailsModal /> : null}
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <StyledHome>
+        <Carousel />
+        <section className="petListContainer">
+          <div className="petListHeader">
+            <div className="petListFilters">
+              <IconButton
+                button={true}
+                img={dogIcon}
+                alt={"Filtrar por cachorros"}
+                size={"4rem"}
+                id={"dogIcon"}
+              />
+              <IconButton
+                button={true}
+                img={catIcon}
+                alt={"Filtrar por gatos"}
+                size={"4rem"}
+                id={"catIcon"}
+              />
+              <IconButton
+                button={true}
+                img={rabbitIcon}
+                alt={"Filtrar por outros"}
+                size={"4rem"}
+                id={"rabbitIcon"}
+              />
+            </div>
+            <IconButton
+              button={true}
+              img={resetButton}
+              alt={"Resetar filtro"}
+              size={"4rem"}
+              id={"buttonReset"}
+            />
+          </div>
+          <PetList />
+        </section>
+      </StyledHome>
+      <Footer />
+      {petDetailsModal ? <PetDetailsModal /> : null}
+    </>
+  );
 }
