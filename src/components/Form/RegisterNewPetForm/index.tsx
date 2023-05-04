@@ -17,7 +17,7 @@ export function RegisterNewPetForm() {
   });
 
   return openModalNewPet === true ? (
-    <div role="dialog">
+    <div role="dialog" className="modalNewPet">
       <form onSubmit={handleSubmit(createNewPet)}>
         <button onClick={() => setOpenModalNewPet(false)}>X</button>
         <Input
