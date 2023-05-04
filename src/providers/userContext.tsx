@@ -6,86 +6,105 @@ import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 
 export interface IChildren {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 export interface IUserContext {
-  user: null | IUser;
-  setUser: React.Dispatch<React.SetStateAction<null>>;
-  createUser: SubmitHandler<IRegisterFormData>;
-  logIn: SubmitHandler<ILoginFormData>;
-  logOut: () => void;
+	user: null | IUser;
+	setUser: React.Dispatch<React.SetStateAction<null>>;
+	createUser: SubmitHandler<IRegisterFormData>;
+	logIn: SubmitHandler<ILoginFormData>;
+	logOut: () => void;
+	loginModal: boolean;
+	setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
+	closeLoginModal: () => void;
 }
 
 export interface IUser {
-  confirm: string;
-  email: string;
-  id: number;
-  name: string;
+	confirm: string;
+	email: string;
+	id: number;
+	name: string;
 }
 
 export interface IRegisterFormData {
-  name: string;
-  email: string;
-  password: string;
-  confirm?: string;
+	name: string;
+	email: string;
+	password: string;
+	confirm?: string;
 }
 
 export interface ILoginFormData {
-  email: string;
-  password: string;
+	email: string;
+	password: string;
 }
 
 export const UserContext = createContext({} as IUserContext);
 
 export function UserProvider({ children }: IChildren) {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+	const [user, setUser] = useState(null);
+	const navigate = useNavigate();
+	const [loginModal, setLoginModal] = useState(false);
 
-  const createUser: SubmitHandler<IRegisterFormData> = async (formData) => {
-    delete formData.confirm;
+	const createUser: SubmitHandler<IRegisterFormData> = async formData => {
+		delete formData.confirm;
 
-    try {
-      await api.post("/register", formData);
-      navigate("/login");
-      toast.success("Conta criada com sucesso");
-    } catch (error) {
-      const currentError = error as AxiosError<string>;
-      toast.error(currentError.response?.data);
-    }
-  };
+		try {
+			await api.post("/register", formData);
+			navigate("/login");
+			toast.success("Conta criada com sucesso");
+		} catch (error) {
+			const currentError = error as AxiosError<string>;
+			toast.error(currentError.response?.data);
+		}
+	};
 
-  const logIn = async (formData: ILoginFormData) => {
-    try {
-      const response = await api.post("/login", formData);
-      if (response.data.accessToken) {
-        api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
-        setUser(response.data.user);
-        localStorage.setItem(
-          "@FHtoken",
-          JSON.stringify(response.data.accessToken)
-        );
-        localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
-        toast.success("Usuário logado com sucesso");
-        navigate("/");
+	const logIn = async (formData: ILoginFormData) => {
+		try {
+			const response = await api.post("/login", formData);
+			if (response.data.accessToken) {
+				api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
+				setUser(response.data.user);
+				localStorage.setItem(
+					"@FHtoken",
+					JSON.stringify(response.data.accessToken)
+				);
+				localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
+				toast.success("Usuário logado com sucesso");
+				// navigate("/");
+			}
+      if (loginModal){
+        setLoginModal(false);
       }
-    } catch (error) {
-      const currentError = error as AxiosError<string>;
-      toast.error(currentError.response?.data);
-    }
-  };
+		} catch (error) {
+			const currentError = error as AxiosError<string>;
+			toast.error(currentError.response?.data);
+		}
+	};
 
-  const logOut = () => {
-    localStorage.removeItem("@FHtoken");
-    localStorage.removeItem("@FHid");
-    setUser(null);
-    toast.success("Deslogado com sucesso");
-    navigate("/");
-  };
+	const logOut = () => {
+		localStorage.removeItem("@FHtoken");
+		localStorage.removeItem("@FHid");
+		setUser(null);
+		toast.success("Deslogado com sucesso");
+		navigate("/");
+	};
 
-  return (
-    <UserContext.Provider value={{ createUser, logIn, logOut, user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+	const closeLoginModal = () => setLoginModal(false);
+
+	return (
+		<UserContext.Provider
+			value={{
+				createUser,
+				logIn,
+				logOut,
+				user,
+				setUser,
+				loginModal,
+				setLoginModal,
+				closeLoginModal,
+			}}>
+			{children}
+		</UserContext.Provider>
+	);
 }

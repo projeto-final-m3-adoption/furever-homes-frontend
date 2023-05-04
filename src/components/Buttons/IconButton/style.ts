@@ -79,6 +79,9 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
     #buttonReset > img {
       width: 2rem;
     }
+    #closeIcon > img {
+      width: 1.25rem;
+    }
   }
 `;
 
