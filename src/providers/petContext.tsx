@@ -27,7 +27,9 @@ interface IIPetFull {
   petsSearchFilter: IIPet[];
   setPetsSearchFilter: React.Dispatch<React.SetStateAction<IIPet[]>>;
   filterButtons: (icon: string) => void;
+  adoptPet: (petId: number | string | undefined | null) => Promise<void>;
 }
+
 export const petContext = createContext({} as IIPetFull);
 
 export function PetProvider() {
@@ -74,6 +76,28 @@ export function PetProvider() {
     setPetsSearchFilter(petsFilter);
   }
 
+  const adoptPet = async (petId: number | string | undefined | null) => {
+    let token = localStorage.getItem("@FHid");
+    if (token) {
+      token = JSON.parse(token);
+    }
+    try {
+      await api.patch(
+        `/pet/${petId}`,
+        {
+          isAdopted: true,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <petContext.Provider
       value={{
@@ -86,6 +110,7 @@ export function PetProvider() {
         petsSearchFilter,
         setPetsSearchFilter,
         filterButtons,
+        adoptPet,
       }}
     >
       <Outlet />
