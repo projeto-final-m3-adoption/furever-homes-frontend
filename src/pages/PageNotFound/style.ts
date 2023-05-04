@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const StyledPageNotFound = styled.main`
-  width: 100%;
-  height: fit-content;
-  min-height: 100%;
+  min-height: calc(100vh-1.25rem-1.25rem);
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  padding: 0 2%;
+  padding: 1.25rem 0;
 
   .pageNotFoundImages {
     .desktopImg {
@@ -50,9 +48,8 @@ export const StyledPageNotFound = styled.main`
 
   @media (min-width: 768.1px) {
     flex-direction: row;
-    min-height: fit-content;
     gap: 3.5rem;
-    padding: 2rem;
+    height: 100vh;
 
     .pageNotFoundImages {
       .desktopImg {
