@@ -38,9 +38,6 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
         <button
           className="roundButton"
           id={id}
-          // onClick={() => {
-          // 	alt === "Logout" ? logOut() : null;
-          // }}
           onClick={() => onButtonClick(alt)}
         >
           <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
