@@ -53,6 +53,7 @@ html, body, div, span, applet, object, iframe,
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--grey-6);
+    margin-bottom: 3.125rem;
   }
 
   #root {
@@ -65,5 +66,29 @@ html, body, div, span, applet, object, iframe,
   
   button {
 	  cursor: pointer;
+  }
+  
+  .pet-container-salmon {
+    background-color: #efa48b;
+  }
+
+  .pet-container-purple {
+    background-color: #8a4fff;
+  }
+
+  .pet-container-blue {
+    background-color: #2eb3ce;
+  }
+
+  .pet-container-green {
+    background-color: #9ee493;
+  }
+
+  .pet-container-red {
+    background-color: #f9627d;
+  }
+
+  .pet-container-yellow {
+    background-color: #ffc759;
   }
   `;

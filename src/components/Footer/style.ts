@@ -9,12 +9,16 @@ export const StyledFooter = styled.footer`
   align-items: center;
 
   .footer-paragraph {
-    font-family: "Open Sans";
     font-size: 0.75rem;
     color: var(--grey-6);
     display: flex;
     align-items: center;
     gap: 0.313rem;
+  }
+
+  .footer-paragraph > a {
+    text-decoration: none;
+    color: var(--grey-6);
   }
 
   .footer-heart {

@@ -100,7 +100,7 @@ export const StyledHeader = styled.header`
   }
 
   @media (min-width: 768.1px) {
-    height: 6.875rem;
+    height: 6rem;
 
     .headerNavbar {
       height: 100%;
@@ -144,7 +144,7 @@ export const StyledHeader = styled.header`
               justify-content: space-between;
               align-items: center;
               width: 23rem;
-              height: 4.5rem;
+              height: 4rem;
               padding: 1.375rem;
               background-color: var(--white);
               border: 1px solid var(--white);

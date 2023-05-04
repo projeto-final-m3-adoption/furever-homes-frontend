@@ -13,7 +13,6 @@ export function MainRoutes() {
       <Route element={<PetProvider />}>
         <Route path="/home" element={<Home />} />
       </Route>
-
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>

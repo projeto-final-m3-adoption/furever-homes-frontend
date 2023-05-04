@@ -7,6 +7,8 @@ import rabbitIcon from "../../assets/RabbitFilterIcon.svg";
 import resetButton from "../../assets/ResetFilter.svg";
 import { PetList } from "../../components/PetList";
 import { Footer } from "../../components/Footer";
+import { IconButton } from "../../components/Buttons/IconButton";
+import { RegisterNewPetForm } from "../../components/Form/RegisterNewPetForm";
 
 export function Home() {
   return (
@@ -14,19 +16,20 @@ export function Home() {
       <Header />
       <StyledHome>
         <Carousel />
-        <section className="animal-list-container">
-          <img src={dogIcon} alt="" className="dogIcon" />
-          <img src={catIcon} alt="" className="catIcon" />
-          <img src={rabbitIcon} alt="" className="rabbitIcon" />
-          <div className="containerReset">
-            <img src={resetButton} alt="resetButton" className="buttonReset" />
+        <RegisterNewPetForm />
+        <section className="petListContainer">
+          <div className="petListHeader">
+            <div className="petListFilters">
+              <IconButton button={true} img={dogIcon} alt={"Filtrar por cachorros"} size={"4rem"} id={"dogIcon"} />
+              <IconButton button={true} img={catIcon} alt={"Filtrar por gatos"} size={"4rem"} id={"catIcon"} />
+              <IconButton button={true} img={rabbitIcon} alt={"Filtrar por outros"} size={"4rem"} id={"rabbitIcon"} />
+            </div>
+            <IconButton button={true} img={resetButton} alt={"Resetar filtro"} size={"4rem"} id={"buttonReset"} />
           </div>
-        </section>
-        <ul className="pets-list">
           <PetList />
-        </ul>
+        </section>
       </StyledHome>
-      <Footer />      
+      <Footer />
     </>
   );
 }
