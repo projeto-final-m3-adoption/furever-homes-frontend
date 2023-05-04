@@ -25,7 +25,7 @@ export function LoginModal() {
 
   return (
     <StyledLoginModal>
-      <StyledForm className="formContainer">
+      <StyledForm className="formContainer form-container-margin">
         <span className="formHeader">
           <h2>Login</h2>
           <IconButton
