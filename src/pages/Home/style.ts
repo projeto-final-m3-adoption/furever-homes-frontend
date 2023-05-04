@@ -4,11 +4,11 @@ export const StyledHome = styled.main`
 	padding: 2% 8%;
 	display: flex;
 	flex-direction: column;
-	min-height: 39.75rem;
 	gap: 0.5rem;
 	margin-bottom: 1.125rem;
 	.petListContainer {
 		width: 100%;
+		min-height: 25rem;
 		height: fit-content;
 		display: flex;
 		flex-direction: column;
@@ -33,10 +33,9 @@ export const StyledHome = styled.main`
 		}
 	}
 	@media (min-width: 768.1px) {
-		min-height: 47.75rem;
-		height: 108%;
 		margin-bottom: 1.125rem;
 		.petListContainer {
+			min-height: 33.75rem;
 			align-items: center;
 			gap: 1.5rem;
 			padding: 2.25rem 2.75rem;
