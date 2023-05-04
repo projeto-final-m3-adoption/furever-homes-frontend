@@ -22,10 +22,7 @@ interface IIPetFull {
   setPetFull: React.Dispatch<React.SetStateAction<IIPet[]>>;
   loadPets: () => void;
   createNewPet: SubmitHandler<IRegisterNewPetFormData>;
-  adoptPet: (
-    formData: IIPet,
-    petId: number | string | undefined | null
-  ) => Promise<void>;
+  adoptPet: (petId: number | string | undefined | null) => Promise<void>
 }
 
 export interface IRegisterNewPetFormData {
@@ -80,7 +77,7 @@ export function PetProvider() {
   };
 
   const adoptPet = async (
-    formData: IIPet,
+    // formData: IIPet, QUALQUER COISA ALTERAR AQUI
     petId: number | string | undefined | null
   ) => {
     let token = localStorage.getItem("@FUREVERHOMES@TOKEN");
