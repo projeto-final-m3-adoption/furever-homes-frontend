@@ -1,4 +1,5 @@
-import { IIPet } from "../../../providers/petContext";
+import { useContext } from "react";
+import { IIPet, petContext } from "../../../providers/petContext";
 import { StyledPetCard } from "./style";
 
 export interface IPetCardProps {
@@ -7,6 +8,8 @@ export interface IPetCardProps {
 }
 
 export function PetCard({ pet, index }: IPetCardProps) {
+  const { setPetDetailsModal, setPetObject } = useContext(petContext);
+
   const setColor = (id: number) => {
     const colors = [
       "pet-container-salmon",
@@ -20,7 +23,12 @@ export function PetCard({ pet, index }: IPetCardProps) {
   };
 
   return (
-    <StyledPetCard>
+    <StyledPetCard
+      onClick={() => {
+        setPetDetailsModal(true);
+        setPetObject(pet);
+      }}
+    >
       <div
         className="pet-img-container"
         style={{ backgroundImage: `url(${pet.img})` }}

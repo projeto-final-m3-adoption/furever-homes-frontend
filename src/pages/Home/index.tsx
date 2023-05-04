@@ -8,8 +8,13 @@ import resetButton from "../../assets/ResetFilter.svg";
 import { PetList } from "../../components/PetList";
 import { Footer } from "../../components/Footer";
 import { IconButton } from "../../components/Buttons/IconButton";
+import { useContext } from "react";
+import { petContext } from "../../providers/petContext";
+import { PetDetailsModal } from "../../components/Modal/PetDetailsModal";
 
 export function Home() {
+  const { petDetailsModal } = useContext(petContext);
+
   return (
     <>
       <Header />
@@ -52,6 +57,7 @@ export function Home() {
         </section>
       </StyledHome>
       <Footer />
+      {petDetailsModal ? <PetDetailsModal /> : null}
     </>
   );
 }
