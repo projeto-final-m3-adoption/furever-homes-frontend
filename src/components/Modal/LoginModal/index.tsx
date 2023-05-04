@@ -13,7 +13,7 @@ import CloseIcon from "../../../assets/CloseIconWT.svg";
 import { IconButton } from "../../Buttons/IconButton";
 
 export function LoginModal() {
-	const { logIn } = useContext(UserContext);
+	const { logInModal } = useContext(UserContext);
 
 	const {
 		register,
@@ -36,7 +36,7 @@ export function LoginModal() {
 						id={"closeIcon"}
 					/>
 				</span>
-				<form onSubmit={handleSubmit(logIn)}>
+				<form onSubmit={handleSubmit(logInModal)}>
 					<Input
 						id="email"
 						label="E-mail"

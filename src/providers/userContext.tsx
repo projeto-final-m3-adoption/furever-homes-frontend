@@ -18,6 +18,7 @@ export interface IUserContext {
 	loginModal: boolean;
 	setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
 	closeLoginModal: () => void;
+  logInModal: (formData: ILoginFormData) => Promise<void>;
 }
 
 export interface IUser {
@@ -59,7 +60,7 @@ export function UserProvider({ children }: IChildren) {
 		}
 	};
 
-	const logIn = async (formData: ILoginFormData) => {
+  const logIn = async (formData: ILoginFormData) => {
 		try {
 			const response = await api.post("/login", formData);
 			if (response.data.accessToken) {
@@ -71,7 +72,29 @@ export function UserProvider({ children }: IChildren) {
 				);
 				localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
 				toast.success("Usuário logado com sucesso");
-				// navigate("/");
+				navigate("/");
+			}
+      if (loginModal){
+        setLoginModal(false);
+      }
+		} catch (error) {
+			const currentError = error as AxiosError<string>;
+			toast.error(currentError.response?.data);
+		}
+	};
+
+	const logInModal = async (formData: ILoginFormData) => {
+		try {
+			const response = await api.post("/login", formData);
+			if (response.data.accessToken) {
+				api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
+				setUser(response.data.user);
+				localStorage.setItem(
+					"@FHtoken",
+					JSON.stringify(response.data.accessToken)
+				);
+				localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
+				toast.success("Usuário logado com sucesso");
 			}
       if (loginModal){
         setLoginModal(false);
@@ -103,6 +126,7 @@ export function UserProvider({ children }: IChildren) {
 				loginModal,
 				setLoginModal,
 				closeLoginModal,
+        logInModal,
 			}}>
 			{children}
 		</UserContext.Provider>
