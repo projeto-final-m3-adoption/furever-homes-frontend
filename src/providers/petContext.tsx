@@ -27,19 +27,21 @@ interface IIPetFull {
 	petsSearchFilter: IIPet[];
 	setPetsSearchFilter: React.Dispatch<React.SetStateAction<IIPet[]>>;
 	filterButtons: (icon: string) => void;
+	adoptPet: (petId: number | string | undefined | null) => Promise<void>;
 	petObject: IIPet | null | undefined;
 	setPetObject: React.Dispatch<React.SetStateAction<IIPet | null | undefined>>;
 	petDetailsModal: boolean;
 	setPetDetailsModal: React.Dispatch<React.SetStateAction<boolean>>;
 	closePetDetailsModal(): void;
 }
+
 export const petContext = createContext({} as IIPetFull);
 
 export function PetProvider() {
 	const [petFull, setPetFull] = useState<IIPet[]>([]);
-	const [petsSearchFilter, setPetsSearchFilter] = useState<IIPet[]>([]);
 	const [textSearch, setTextSearch] = useState("");
 
+	const [petsSearchFilter, setPetsSearchFilter] = useState<IIPet[]>([]);
 	const [petDetailsModal, setPetDetailsModal] = useState(false);
 	const [petObject, setPetObject] = useState<IIPet | null>();
 
@@ -55,8 +57,6 @@ export function PetProvider() {
 	useEffect(() => {
 		loadPets();
 	}, []);
-
-	const closePetDetailsModal = () => setPetDetailsModal(false);
 
 	function submitSearch(event: React.FormEvent) {
 		event.preventDefault();
@@ -79,6 +79,30 @@ export function PetProvider() {
 		setPetsSearchFilter(petsFilter);
 	}
 
+	const adoptPet = async (petId: number | string | undefined | null) => {
+		let token = localStorage.getItem("@FHtoken");
+		if (token) {
+			token = JSON.parse(token);
+		}
+		try {
+			await api.patch(
+				`/pet/${petId}`,
+				{
+					isAdopted: true,
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const closePetDetailsModal = () => setPetDetailsModal(false);
+
 	return (
 		<petContext.Provider
 			value={{
@@ -91,6 +115,7 @@ export function PetProvider() {
 				petsSearchFilter,
 				setPetsSearchFilter,
 				filterButtons,
+				adoptPet,
 				petObject,
 				setPetObject,
 				petDetailsModal,
