@@ -14,8 +14,8 @@ export interface IIPet {
   description: string;
   adress: string;
   isAdopted: boolean;
-  userId: number;
-  id: number;
+  userId: any;
+  id: any;
 }
 
 interface IIPetFull {
@@ -23,6 +23,7 @@ interface IIPetFull {
   setPetFull: React.Dispatch<React.SetStateAction<IIPet[]>>;
   loadPets: () => void;
   createNewPet: SubmitHandler<IRegisterNewPetFormData>;
+
   textSearch: string;
   setTextSearch: React.Dispatch<React.SetStateAction<string>>;
   submitSearch: (event: React.FormEvent) => void;
@@ -31,6 +32,7 @@ interface IIPetFull {
   filterButtons: (icon: string) => void;
   openModalNewPet: boolean;
   setOpenModalNewPet: React.Dispatch<React.SetStateAction<boolean>>;
+  adoptPet: (petId: number | string | undefined | null) => Promise<void>;
 }
 
 export interface IRegisterNewPetFormData {
@@ -45,6 +47,11 @@ export interface IRegisterNewPetFormData {
   isAdopted?: boolean;
   userId?: number;
   id?: number;
+}
+
+export interface IAdoptPet {
+  formData: IIPet;
+  userId: string | undefined | null | number;
 }
 
 export const petContext = createContext({} as IIPetFull);
@@ -99,6 +106,33 @@ export function PetProvider() {
     setPetsSearchFilter(petsFilter);
   }
 
+  const adoptPet = async (
+    // formData: IIPet, QUALQUER COISA ALTERAR AQUI
+    // NOVO TESTE
+    petId: number | string | undefined | null
+  ) => {
+    let token = localStorage.getItem("@FUREVERHOMES@TOKEN");
+    if (token) {
+      token = JSON.parse(token);
+    }
+
+    try {
+      await api.patch(
+        `/pet/${petId}`,
+        {
+          isAdopted: true,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <petContext.Provider
       value={{
@@ -114,6 +148,7 @@ export function PetProvider() {
         createNewPet,
         openModalNewPet,
         setOpenModalNewPet,
+        adoptPet,
       }}
     >
       <Outlet />
