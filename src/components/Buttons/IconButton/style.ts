@@ -59,25 +59,20 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
   }
   @media (min-width: 768.1px) {
     .roundButton {
-      width: ${({ size }) => size};
-      height: ${({ size }) => size};
+      width: 2.8125rem;
+      height: auto;
     }
     .iconBtnImg {
-      width: ${({ size }) =>
-        size === "4rem"
-          ? "2.375rem"
-          : size === "3.125rem"
-          ? "1.875rem"
-          : "1.5rem"};
+      width: 1.5625rem;
       height: auto;
     }
     #dogIcon > img,
     #catIcon > img,
     #rabbitIcon > img {
-      width: 3.125rem;
+      width: 2.1875rem;
     }
     #buttonReset > img {
-      width: 2rem;
+      width: 1.5625rem;
     }
   }
 `;
