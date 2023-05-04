@@ -38,9 +38,12 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
           // onClick={() => {
           // 	alt === "Logout" ? logOut() : null;
           // }}
+
           onClick={() => {
             onButtonClick(alt);
-            setOpenModalNewPet(true);
+            {
+              id === "registerPetButton" ? setOpenModalNewPet(true) : null;
+            }
           }}
         >
           <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
