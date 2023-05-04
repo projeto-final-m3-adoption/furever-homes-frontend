@@ -113,6 +113,7 @@ export function PetProvider() {
 			);
       closePetDetailsModal();
 			openAdoptedModal();
+      loadPets();
 		} catch (error) {
 			console.log(error);
 		}
