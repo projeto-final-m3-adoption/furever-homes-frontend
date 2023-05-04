@@ -18,7 +18,7 @@ export const StyledFooter = styled.footer`
 
   .footer-paragraph > a {
     text-decoration: none;
-	color: var(--grey-6);
+    color: var(--grey-6);
   }
 
   .footer-heart {

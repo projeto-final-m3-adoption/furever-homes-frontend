@@ -2,87 +2,91 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export interface IStyledIconButton {
-	size?: string;
+  size?: string;
 }
 
 export interface IStyledLink {
-	size?: string;
+  size?: string;
 }
 
 export const StyledIconButton = styled.div<IStyledIconButton>`
-	.roundButton {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--primary);
-		width: 2.5rem;
-		height: 2.5rem;
-		aspect-ratio: 1;
-		border-radius: 50%;
-		:hover {
-			background-color: var(--secondary);
-		}
-	}
-	.iconBtnImg {
-		width: 1.375rem;
-		height: auto;
-	}
-	#dogIcon {
-		background-color: #c2ebff;
-		img {
-			width: 2rem;
-		}
-		:hover {
-			filter: brightness(0.95);
-		}
-	}
-	#catIcon {
-		background-color: #c2f4d0;
-		img {
-			width: 2rem;
-		}
-		:hover {
-			filter: brightness(0.95);
-		}
-	}
-	#rabbitIcon {
-		background-color: #faa6ae;
-		img {
-			width: 2rem;
-		}
-		:hover {
-			filter: brightness(0.95);
-		}
-	}
-	#buttonReset > img {
-		width: 1.5rem;
-	}
-	@media (min-width: 768.1px) {
-		.roundButton {
-			width: ${({ size }) => size};
-			height: ${({ size }) => size};
-		}
-		.iconBtnImg {
-			width: ${({ size }) =>
-				size === "4rem" ? "2.375rem" : size === "3.125rem" ? "1.875rem" : "1.5rem"};
-			height: auto;
-		}
-		#dogIcon > img,
-		#catIcon > img,
-		#rabbitIcon > img {
-			width: 3.125rem;
-		}
-		#buttonReset > img {
-			width: 2rem;
-		}
-	}
+  .roundButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    width: 2.5rem;
+    height: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    :hover {
+      background-color: var(--secondary);
+    }
+  }
+  .iconBtnImg {
+    width: 1.375rem;
+    height: auto;
+  }
+  #dogIcon {
+    background-color: #c2ebff;
+    img {
+      width: 2rem;
+    }
+    :hover {
+      filter: brightness(0.95);
+    }
+  }
+  #catIcon {
+    background-color: #c2f4d0;
+    img {
+      width: 2rem;
+    }
+    :hover {
+      filter: brightness(0.95);
+    }
+  }
+  #rabbitIcon {
+    background-color: #faa6ae;
+    img {
+      width: 2rem;
+    }
+    :hover {
+      filter: brightness(0.95);
+    }
+  }
+  #buttonReset > img {
+    width: 1.5rem;
+  }
+  @media (min-width: 768.1px) {
+    .roundButton {
+      width: ${({ size }) => size};
+      height: ${({ size }) => size};
+    }
+    .iconBtnImg {
+      width: ${({ size }) =>
+        size === "4rem"
+          ? "2.375rem"
+          : size === "3.125rem"
+          ? "1.875rem"
+          : "1.5rem"};
+      height: auto;
+    }
+    #dogIcon > img,
+    #catIcon > img,
+    #rabbitIcon > img {
+      width: 3.125rem;
+    }
+    #buttonReset > img {
+      width: 2rem;
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)<IStyledLink>`
-	@media (min-width: 768.1px) {
-		.roundButton {
-			width: ${({ size }) => size};
-			height: ${({ size }) => size};
-		}
-	}
+  @media (min-width: 768.1px) {
+    .roundButton {
+      width: ${({ size }) => size};
+      height: ${({ size }) => size};
+    }
+  }
 `;
