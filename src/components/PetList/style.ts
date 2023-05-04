@@ -4,17 +4,20 @@ export const StyledPetList = styled.ul`
   overflow-y: hidden;
   overflow-x: auto;
   height: auto;
-  width: calc(100% + 1.5rem);
+  width: 100%;
   display: flex;
   gap: 1.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
 
-  /* li:hover {
-		border: 2px solid var(--color-gray-1);
-		transform: scale(1.1);
-		transition: 0.9s;
-	} */
+  li {
+    transition: transform 0.25s ease-in-out;
+  }
+
+  li:hover {
+    border: 2px solid var(--color-gray-1);
+    transform: translate3d(0, -0.3125rem, 0);
+  }
 
   ::-webkit-scrollbar {
     background: transparent;
@@ -23,10 +26,11 @@ export const StyledPetList = styled.ul`
     height: 0.875rem;
     min-width: 5rem;
     border-radius: var(--radius-20);
-    background-color: var(--secondary);
+    background-color: var(--primary);
   }
   ::-webkit-scrollbar-track {
     margin-right: 1.5rem;
+    margin-left: 1.5rem;
   }
 
   @media (min-width: 768.1px) {

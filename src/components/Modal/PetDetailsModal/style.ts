@@ -16,12 +16,7 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
   justify-content: center;
   align-items: center;
 
-  .isAdopted > .petImg {
-    filter: blur(2px);
-  }
-
-  .petModal,
-  .isAdopted {
+  .petModal {
     position: relative;
     height: 33.75rem;
     width: 20rem;
