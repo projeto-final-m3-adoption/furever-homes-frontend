@@ -15,6 +15,10 @@ export interface IUserContext {
   createUser: SubmitHandler<IRegisterFormData>;
   logIn: SubmitHandler<ILoginFormData>;
   logOut: () => void;
+  loginModal: boolean;
+  setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeLoginModal: () => void;
+  logInModal: (formData: ILoginFormData) => Promise<void>;
 }
 
 export interface IUser {
@@ -41,6 +45,7 @@ export const UserContext = createContext({} as IUserContext);
 export function UserProvider({ children }: IChildren) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [loginModal, setLoginModal] = useState(false);
 
   const createUser: SubmitHandler<IRegisterFormData> = async (formData) => {
     delete formData.confirm;
@@ -69,6 +74,31 @@ export function UserProvider({ children }: IChildren) {
         toast.success("Usuário logado com sucesso");
         navigate("/");
       }
+      if (loginModal) {
+        setLoginModal(false);
+      }
+    } catch (error) {
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
+    }
+  };
+
+  const logInModal = async (formData: ILoginFormData) => {
+    try {
+      const response = await api.post("/login", formData);
+      if (response.data.accessToken) {
+        api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
+        setUser(response.data.user);
+        localStorage.setItem(
+          "@FHtoken",
+          JSON.stringify(response.data.accessToken)
+        );
+        localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
+        toast.success("Usuário logado com sucesso");
+      }
+      if (loginModal) {
+        setLoginModal(false);
+      }
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
@@ -83,8 +113,22 @@ export function UserProvider({ children }: IChildren) {
     navigate("/");
   };
 
+  const closeLoginModal = () => setLoginModal(false);
+
   return (
-    <UserContext.Provider value={{ createUser, logIn, logOut, user, setUser }}>
+    <UserContext.Provider
+      value={{
+        createUser,
+        logIn,
+        logOut,
+        user,
+        setUser,
+        loginModal,
+        setLoginModal,
+        closeLoginModal,
+        logInModal,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

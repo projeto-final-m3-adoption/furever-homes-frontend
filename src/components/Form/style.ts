@@ -14,6 +14,7 @@ export const StyledForm = styled.section`
   background-color: var(--grey-0);
   border: solid 1px var(--grey-2);
   border-radius: var(--radius-30);
+  margin: 0 auto;
 
   .formHeader {
     width: 100%;

@@ -12,7 +12,7 @@ export interface IIconButtonProps {
 }
 
 export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
-  const { logOut } = useContext(UserContext);
+  const { logOut, setLoginModal } = useContext(UserContext);
   const { filterButtons } = useContext(petContext);
 
   function onButtonClick(alt: string) {
@@ -27,9 +27,10 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
       : alt === "Resetar filtro"
       ? filterButtons("")
       : alt === "Cadastrar pet"
-      ? // FUNÇÃO DE ABRIR MODAL DE CADASTRO DO PET;
-        null
-      : false;
+      ? null // FUNÇÃO DE ABRIR MODAL DE CADASTRO DO PET;
+      : alt === "Fechar login"
+      ? setLoginModal(false)
+      : null;
   }
 
   return (

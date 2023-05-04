@@ -33,6 +33,7 @@ interface IIPetFull {
   petDetailsModal: boolean;
   setPetDetailsModal: React.Dispatch<React.SetStateAction<boolean>>;
   closePetDetailsModal(): void;
+  adoptedModal: boolean;
 }
 
 export const petContext = createContext({} as IIPetFull);
@@ -43,6 +44,7 @@ export function PetProvider() {
   const [petsSearchFilter, setPetsSearchFilter] = useState<IIPet[]>([]);
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
+  const [adoptedModal, setAdoptedModal] = useState(false);
 
   async function loadPets() {
     try {
@@ -82,7 +84,17 @@ export function PetProvider() {
     setPetsSearchFilter(petsFilter);
   }
 
-  const adoptPet = async (petId: number | string | undefined | null) => {
+  function closePetDetailsModal() {
+    setPetDetailsModal(false);
+    setPetObject(null);
+  }
+
+  function openAdoptedModal() {
+    setAdoptedModal(true);
+    setTimeout(() => setAdoptedModal(false), 10000);
+  }
+
+  async function adoptPet(petId: number | string | undefined | null) {
     let token = localStorage.getItem("@FHtoken");
     if (token) {
       token = JSON.parse(token);
@@ -99,12 +111,13 @@ export function PetProvider() {
           },
         }
       );
+      closePetDetailsModal();
+      openAdoptedModal();
+      loadPets();
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const closePetDetailsModal = () => setPetDetailsModal(false);
+  }
 
   return (
     <petContext.Provider
@@ -124,6 +137,7 @@ export function PetProvider() {
         petDetailsModal,
         setPetDetailsModal,
         closePetDetailsModal,
+        adoptedModal,
       }}
     >
       <Outlet />
