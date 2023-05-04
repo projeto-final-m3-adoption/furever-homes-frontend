@@ -78,6 +78,7 @@ export function PetProvider() {
 
   const adoptPet = async (
     // formData: IIPet, QUALQUER COISA ALTERAR AQUI
+    // NOVO TESTE
     petId: number | string | undefined | null
   ) => {
     let token = localStorage.getItem("@FUREVERHOMES@TOKEN");
