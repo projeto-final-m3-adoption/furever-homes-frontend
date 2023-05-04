@@ -53,6 +53,7 @@ html, body, div, span, applet, object, iframe,
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--grey-6);
+    margin-bottom: 3.125rem;
   }
 
   #root {

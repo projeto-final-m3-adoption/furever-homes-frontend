@@ -33,7 +33,6 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
 			width: 2rem;
 		}
 		:hover {
-			/* background-color: var(--primary); */
 			filter: brightness(0.95);
 		}
 	}
@@ -43,7 +42,6 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
 			width: 2rem;
 		}
 		:hover {
-			/* background-color: var(--primary); */
 			filter: brightness(0.95);
 		}
 	}
@@ -53,7 +51,6 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
 			width: 2rem;
 		}
 		:hover {
-			/* background-color: var(--primary); */
 			filter: brightness(0.95);
 		}
 	}
@@ -67,13 +64,13 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
 		}
 		.iconBtnImg {
 			width: ${({ size }) =>
-				size === "4.5rem" ? "2.375rem" : size === "3.125rem" ? "1.875rem" : "1.5rem"};
+				size === "4rem" ? "2.375rem" : size === "3.125rem" ? "1.875rem" : "1.5rem"};
 			height: auto;
 		}
 		#dogIcon > img,
 		#catIcon > img,
 		#rabbitIcon > img {
-			width: 3.375rem;
+			width: 3.125rem;
 		}
 		#buttonReset > img {
 			width: 2rem;

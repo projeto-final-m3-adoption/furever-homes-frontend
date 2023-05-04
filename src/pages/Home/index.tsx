@@ -22,21 +22,21 @@ export function Home() {
 								button={true}
 								img={dogIcon}
 								alt={"Filtrar por cachorros"}
-								size={"4.5rem"}
+								size={"4rem"}
 								id={"dogIcon"}
 							/>
 							<IconButton
 								button={true}
 								img={catIcon}
 								alt={"Filtrar por gatos"}
-								size={"4.5rem"}
+								size={"4rem"}
 								id={"catIcon"}
 							/>
 							<IconButton
 								button={true}
 								img={rabbitIcon}
 								alt={"Filtrar por outros"}
-								size={"4.5rem"}
+								size={"4rem"}
 								id={"rabbitIcon"}
 							/>
 						</div>
@@ -44,7 +44,7 @@ export function Home() {
 							button={true}
 							img={resetButton}
 							alt={"Resetar filtro"}
-							size={"4.5rem"}
+							size={"4rem"}
 							id={"buttonReset"}
 						/>
 					</div>
