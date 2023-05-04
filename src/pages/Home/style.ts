@@ -2,44 +2,55 @@ import styled from "styled-components";
 
 export const StyledHome = styled.main`
   padding: 2% 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.125rem;
+  /* height: 100%; */
 
-  .animal-list-container {
-    margin-left: 1rem;
-    margin-top: 1rem;
+  .petListContainer {
+    width: 100%;
+    min-height: 25rem;
+    height: fit-content;
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: var(--grey-0);
+    border: 1px solid var(--grey-2);
+    border-radius: var(--radius-30);
+    padding: 1.5rem;
 
-    img {
-      width: 30px;
+    .petListHeader {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .petListFilters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.625rem;
+      }
     }
+  }
 
-    .catIcon {
-      background: #c2f4d0;
-      border-radius: 32px;
-      padding: 1px 2px;
-      cursor: pointer;
-    }
+  @media (min-width: 768.1px) {
+    margin-bottom: 1.125rem;
 
-    .dogIcon {
-      background: #c2ebff;
-      border-radius: 32px;
-      padding: 2px;
-      cursor: pointer;
-    }
+    .petListContainer {
+      min-height: 33.75rem;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2.25rem 2.75rem;
 
-    .rabbitIcon {
-      background: #faa6ae;
-      border-radius: 32px;
-      padding: 2px;
-      cursor: pointer;
-    }
+      @media (max-width: 880px) {
+        padding: 1.75rem 2.125rem;
+      }
 
-    .containerReset {
-      .buttonReset {
-        background: #c291ff;
-        border-radius: 32px;
-        padding: 2px;
-        cursor: pointer;
+      .petListFilters {
+        gap: 1rem;
       }
     }
   }
