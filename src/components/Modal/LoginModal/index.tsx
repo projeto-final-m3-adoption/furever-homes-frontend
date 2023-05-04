@@ -13,54 +13,54 @@ import CloseIcon from "../../../assets/CloseIconWT.svg";
 import { IconButton } from "../../Buttons/IconButton";
 
 export function LoginModal() {
-	const { logInModal } = useContext(UserContext);
+  const { logInModal } = useContext(UserContext);
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<ILoginFormData>({
-		resolver: zodResolver(loginSchema),
-	});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
 
-	return (
-		<StyledLoginModal>
-			<StyledForm className="formContainer">
-				<span className="formHeader">
-					<h2>Login</h2>
-					<IconButton
-						img={CloseIcon}
-						alt={"Fechar login"}
-						size={"2.5rem"}
-						button={true}
-						id={"closeIcon"}
-					/>
-				</span>
-				<form onSubmit={handleSubmit(logInModal)}>
-					<Input
-						id="email"
-						label="E-mail"
-						type="text"
-						placeholder="Digite seu e-mail..."
-						{...register("email")}
-						error={errors.email?.message}
-					/>
-					<Input
-						id="password"
-						label="Senha"
-						type="password"
-						placeholder="Digite sua senha..."
-						Eye={Eye}
-						{...register("password")}
-						error={errors.password?.message}
-					/>
-					<FormButton text="Login" />
-				</form>
-				<span className="formFooter">
-					<p>Ainda não tem conta?</p>
-					<Link to="/register">Cadastre-se aqui!</Link>
-				</span>
-			</StyledForm>
-		</StyledLoginModal>
-	);
+  return (
+    <StyledLoginModal>
+      <StyledForm className="formContainer">
+        <span className="formHeader">
+          <h2>Login</h2>
+          <IconButton
+            img={CloseIcon}
+            alt={"Fechar login"}
+            size={"2.5rem"}
+            button={true}
+            id={"closeIcon"}
+          />
+        </span>
+        <form onSubmit={handleSubmit(logInModal)}>
+          <Input
+            id="email"
+            label="E-mail"
+            type="text"
+            placeholder="Digite seu e-mail..."
+            {...register("email")}
+            error={errors.email?.message}
+          />
+          <Input
+            id="password"
+            label="Senha"
+            type="password"
+            placeholder="Digite sua senha..."
+            Eye={Eye}
+            {...register("password")}
+            error={errors.password?.message}
+          />
+          <FormButton text="Login" />
+        </form>
+        <span className="formFooter">
+          <p>Ainda não tem conta?</p>
+          <Link to="/register">Cadastre-se aqui!</Link>
+        </span>
+      </StyledForm>
+    </StyledLoginModal>
+  );
 }

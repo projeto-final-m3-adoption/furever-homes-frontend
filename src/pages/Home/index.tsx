@@ -61,10 +61,10 @@ export function Home() {
         </section>
       </StyledHome>
       <Footer />
-			{petDetailsModal ? <PetDetailsModal /> : null}
-			{user && petObject ? <PetDetailsModal /> : null}
-			{loginModal ? <LoginModal /> : null}
-			{adoptedModal ? <AdoptedModal /> : null}
+      {petDetailsModal ? <PetDetailsModal /> : null}
+      {user && petObject ? <PetDetailsModal /> : null}
+      {loginModal ? <LoginModal /> : null}
+      {adoptedModal ? <AdoptedModal /> : null}
     </>
   );
 }
