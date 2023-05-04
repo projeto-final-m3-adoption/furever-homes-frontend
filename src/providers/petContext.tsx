@@ -27,8 +27,11 @@ interface IIPetFull {
 	petsSearchFilter: IIPet[];
 	setPetsSearchFilter: React.Dispatch<React.SetStateAction<IIPet[]>>;
 	filterButtons: (icon: string) => void;
+	petObject: IIPet | null | undefined;
+	setPetObject: React.Dispatch<React.SetStateAction<IIPet | null | undefined>>;
 	petDetailsModal: boolean;
 	setPetDetailsModal: React.Dispatch<React.SetStateAction<boolean>>;
+	closePetDetailsModal(): void;
 }
 export const petContext = createContext({} as IIPetFull);
 
@@ -38,9 +41,7 @@ export function PetProvider() {
 	const [textSearch, setTextSearch] = useState("");
 
 	const [petDetailsModal, setPetDetailsModal] = useState(false);
-	const [loginModal, setLoginModal] = useState(false);
-	const [adoptedModal, setAdoptedModal] = useState(false);
-	const [petObject, setPetObject] = useState({});
+	const [petObject, setPetObject] = useState<IIPet | null>();
 
 	async function loadPets() {
 		try {
@@ -54,6 +55,8 @@ export function PetProvider() {
 	useEffect(() => {
 		loadPets();
 	}, []);
+
+	const closePetDetailsModal = () => setPetDetailsModal(false);
 
 	function submitSearch(event: React.FormEvent) {
 		event.preventDefault();
@@ -88,8 +91,11 @@ export function PetProvider() {
 				petsSearchFilter,
 				setPetsSearchFilter,
 				filterButtons,
+				petObject,
+				setPetObject,
 				petDetailsModal,
 				setPetDetailsModal,
+				closePetDetailsModal,
 			}}>
 			<Outlet />
 		</petContext.Provider>

@@ -8,7 +8,7 @@ export interface IPetCardProps {
 }
 
 export function PetCard({ pet, index }: IPetCardProps) {
-	const { setPetDetailsModal } = useContext(petContext);
+	const { setPetDetailsModal, setPetObject } = useContext(petContext);
 
 	const setColor = (id: number) => {
 		const colors = [
@@ -23,7 +23,11 @@ export function PetCard({ pet, index }: IPetCardProps) {
 	};
 
 	return (
-		<StyledPetCard onClick={() => setPetDetailsModal(true)}>
+		<StyledPetCard
+			onClick={() => {
+				setPetDetailsModal(true);
+				setPetObject(pet);
+			}}>
 			<div className="pet-img-container" style={{ backgroundImage: `url(${pet.img})` }}></div>
 			<div className={`pet-description-container ${setColor(index)}`}>
 				<p className="pet-description">{pet.name}</p>
