@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const StyledRegisterPage = styled.main`
-  width: 100%;
-  height: fit-content;
+  min-height: calc(100vh-1.25rem-1.25rem);
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -40,10 +39,11 @@ export const StyledRegisterPage = styled.main`
   }
 
   @media (min-width: 768.1px) {
+    min-height: 100vh;
     flex-direction: row;
     justify-content: center;
     gap: 6.25rem;
-    padding: 5rem;
+    padding: 0 1.25rem;
 
     .registerSection {
       max-width: 36.25rem;
