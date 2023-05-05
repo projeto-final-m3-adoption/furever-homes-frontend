@@ -10,7 +10,7 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: var(--backdrop);
   display: flex;
   justify-content: center;
@@ -18,8 +18,7 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
 
   .petModal {
     position: relative;
-    height: 33.75rem;
-    width: 20rem;
+    width: 90vw;
     border-radius: var(--radius-30);
 
     .closeModal {
@@ -40,19 +39,16 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
     }
 
     .petImg {
-      height: 65%;
+      height: 50vh;
+      width: 100%;
       border-radius: var(--radius-30) var(--radius-30) 0 0;
       background-image: url(${({ url }) => url});
-      height: 80%;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
     }
 
     .petDescriptionContainer {
-      position: absolute;
-      bottom: 0;
-      height: 35%;
       width: 100%;
       border-radius: 0 0 var(--radius-30) var(--radius-30);
       padding: 1.25rem;
@@ -74,26 +70,82 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
 
         .petInfoOne {
           font-weight: 600;
-          font-size: 1.125rem;
+          font-size: 1.375rem;
         }
 
         .petInfoTwo {
-          font-size: 0.75rem;
+          font-size: 1rem;
         }
       }
-      /* .petDescription {
-				text-align: justify;
-			} */
-      /* .petAddress {
-			} */
+
+      .petDescription {
+        height: 4.5rem;
+        overflow-y: scroll;
+      }
+
+      .petDescription::-webkit-scrollbar {
+        background: transparent;
+        width: 0.5rem;
+        margin-left: 0.3125rem;
+      }
+
+      .petDescription::-webkit-scrollbar-thumb {
+        border-radius: var(--radius-20);
+        background-color: var(--grey-0);
+        height: 1.5625rem;
+      }
+
+      .petDescription::-webkit-scrollbar-track {
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+      }
+
       .petAdopt {
+        margin-top: 0.625rem;
         background-color: inherit;
         color: inherit;
+        font-weight: bold;
 
         :hover {
-          text-decoration: underline;
+          -webkit-animation: tracking-in-contract 0.8s
+            cubic-bezier(0.215, 0.61, 0.355, 1) both;
+          animation: tracking-in-contract 0.8s
+            cubic-bezier(0.215, 0.61, 0.355, 1) both;
         }
       }
+    }
+  }
+
+  @-webkit-keyframes tracking-in-contract {
+    0% {
+      letter-spacing: 1em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      letter-spacing: normal;
+      opacity: 1;
+    }
+  }
+  @keyframes tracking-in-contract {
+    0% {
+      letter-spacing: 1em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      letter-spacing: normal;
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 768.1px) {
+    .petModal {
+      width: 40%;
     }
   }
 `;
