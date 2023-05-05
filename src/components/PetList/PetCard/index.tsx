@@ -9,7 +9,8 @@ export interface IPetCardProps {
 }
 
 export function PetCard({ pet, index }: IPetCardProps) {
-  const { setPetDetailsModal, setPetObject } = useContext(petContext);
+  const { setPetDetailsModal, setPetObject } =
+    useContext(petContext);
 
   const setColor = (id: number) => {
     const colors = [
