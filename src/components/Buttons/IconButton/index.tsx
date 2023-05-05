@@ -15,7 +15,7 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
   const { logOut, setLoginModal } = useContext(UserContext);
   const { filterButtons, setRegisterPetModal } = useContext(petContext);
 
-  function closeFormModals(){
+  function closeFormModals() {
     setLoginModal(false);
     setRegisterPetModal(false);
   }
@@ -52,7 +52,9 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
         </button>
       ) : (
         <StyledLink
-          to={alt === "Registro" ? "/register" : alt === "Login" ? "/login" : "/"}
+          to={
+            alt === "Registro" ? "/register" : alt === "Login" ? "/login" : "/"
+          }
           className="roundButton"
           id={id}
           size={size}

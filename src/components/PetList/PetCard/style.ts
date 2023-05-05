@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledPetCard = styled.div`
   height: 21.25rem;
-  width: 230px;
+  width: 14.375rem;
   border-radius: var(--radius-30);
   overflow: hidden;
   cursor: pointer;
@@ -16,11 +16,11 @@ export const StyledPetCard = styled.div`
   }
 
   .adopted-icon {
-    width: 100px;
+    width: 6.25rem;
     height: auto;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0.3125rem;
+    right: 0.3125rem;
     transform: rotate(25deg);
   }
 

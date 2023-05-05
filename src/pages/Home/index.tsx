@@ -17,7 +17,8 @@ import { AdoptedModal } from "../../components/Modal/AdoptedModal";
 import { RegisterPetModal } from "../../components/Modal/RegisterPetModal";
 
 export function Home() {
-	const { registerPetModal, petDetailsModal, petObject, adoptedModal } = useContext(petContext);
+	const { registerPetModal, petDetailsModal, petObject, adoptedModal } =
+		useContext(petContext);
 	const { loginModal, token } = useContext(UserContext);
 
 	return (
