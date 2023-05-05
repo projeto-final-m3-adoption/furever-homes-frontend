@@ -75,7 +75,10 @@ export function UserProvider({ children }: IChildren) {
       if (response.data.accessToken) {
         api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
         setUser(response.data.user);
-        localStorage.setItem("@FHtoken", JSON.stringify(response.data.accessToken));
+        localStorage.setItem(
+          "@FHtoken",
+          JSON.stringify(response.data.accessToken)
+        );
         localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
         toast.success("Usuário logado com sucesso");
         navigate("/");
@@ -95,7 +98,10 @@ export function UserProvider({ children }: IChildren) {
       if (response.data.accessToken) {
         api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
         setUser(response.data.user);
-        localStorage.setItem("@FHtoken", JSON.stringify(response.data.accessToken));
+        localStorage.setItem(
+          "@FHtoken",
+          JSON.stringify(response.data.accessToken)
+        );
         localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
         toast.success("Usuário logado com sucesso");
       }
