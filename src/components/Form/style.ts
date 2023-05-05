@@ -53,7 +53,4 @@ export const StyledForm = styled.section`
       color: var(--secondary);
     }
   }
-
-  /* @media (min-width: 768.1px) {
-	} */
 `;

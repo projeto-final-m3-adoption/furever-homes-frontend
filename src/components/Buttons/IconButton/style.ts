@@ -19,61 +19,78 @@ export const StyledIconButton = styled.div<IStyledIconButton>`
     height: 2.5rem;
     aspect-ratio: 1;
     border-radius: 50%;
+
     :hover {
       background-color: var(--secondary);
     }
   }
+
   .iconBtnImg {
     width: 1.375rem;
     height: auto;
   }
+
   #dogIcon {
     background-color: #c2ebff;
+
     img {
       width: 2rem;
     }
+
     :hover {
       filter: brightness(0.95);
     }
   }
+
   #catIcon {
     background-color: #c2f4d0;
+
     img {
       width: 2rem;
     }
+
     :hover {
       filter: brightness(0.95);
     }
   }
+
   #rabbitIcon {
     background-color: #faa6ae;
+
     img {
       width: 2rem;
     }
+
     :hover {
       filter: brightness(0.95);
     }
   }
+
   #buttonReset > img {
     width: 1.5rem;
   }
+
   @media (min-width: 768.1px) {
     .roundButton {
       width: 2.8125rem;
       height: auto;
     }
+
     .iconBtnImg {
       width: 1.5625rem;
       height: auto;
     }
+
     #dogIcon > img,
     #catIcon > img,
     #rabbitIcon > img {
       width: 2.1875rem;
     }
+
     #buttonReset > img {
       width: 1.5625rem;
     }
+
     #closeIcon > img {
       width: 1.25rem;
     }
