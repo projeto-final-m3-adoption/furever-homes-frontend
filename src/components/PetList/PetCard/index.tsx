@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { IIPet, petContext } from "../../../providers/petContext";
 import { StyledPetCard } from "./style";
+import AdoptedIconPurple from "../../../assets/AdoptedIconPurple.svg";
 
 export interface IPetCardProps {
   pet: IIPet;
@@ -34,7 +35,15 @@ export function PetCard({ pet, index }: IPetCardProps) {
       <div
         className={`pet-img-container ${pet.isAdopted ? "grey-scale" : ""}`}
         style={{ backgroundImage: `url(${pet.img})` }}
-      ></div>
+      >
+        {pet.isAdopted && (
+          <img
+            src={AdoptedIconPurple}
+            alt="Adopted icon"
+            className="adopted-icon"
+          />
+        )}
+      </div>
       <div
         className={`pet-description-container ${
           pet.isAdopted ? "grey-scale-description" : setColor(index)
