@@ -99,7 +99,10 @@ export function RegisterNewPetForm() {
           />
           <p className="inputError">{errors.description?.message}</p>
         </StyledTextareaContainer>
-        <FormButton id="smallFormButton" text="Cadastrar pet para adoção" />
+        <FormButton
+          customClass="smallFormButton"
+          text="Cadastrar pet para adoção"
+        />
       </form>
     </StyledForm>
   );
