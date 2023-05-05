@@ -19,7 +19,7 @@ import { RegisterPetModal } from "../../components/Modal/RegisterPetModal";
 export function Home() {
   const { registerPetModal, petDetailsModal, petObject, adoptedModal } =
     useContext(petContext);
-  const { loginModal, user } = useContext(UserContext);
+  const { loginModal, token } = useContext(UserContext);
 
   return (
     <>
@@ -65,7 +65,7 @@ export function Home() {
       <Footer />
       {registerPetModal ? <RegisterPetModal /> : null}
       {petDetailsModal ? <PetDetailsModal /> : null}
-      {user && petObject ? <PetDetailsModal /> : null}
+      {token && petObject ? <PetDetailsModal /> : null}
       {loginModal ? <LoginModal /> : null}
       {adoptedModal ? <AdoptedModal /> : null}
     </>

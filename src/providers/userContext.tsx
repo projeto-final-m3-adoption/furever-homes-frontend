@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ export interface IUserContext {
   setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
   closeLoginModal: () => void;
   logInModal: (formData: ILoginFormData) => Promise<void>;
+  token: string;
 }
 
 export interface IUser {
@@ -46,6 +47,7 @@ export function UserProvider({ children }: IChildren) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
+  const token = localStorage.getItem("@FHtoken");
 
   const createUser: SubmitHandler<IRegisterFormData> = async (formData) => {
     delete formData.confirm;
@@ -59,6 +61,13 @@ export function UserProvider({ children }: IChildren) {
       toast.error(currentError.response?.data);
     }
   };
+
+  useEffect(() => {
+    const locationUrl = location.pathname;
+    if (token && (locationUrl === "/register" || locationUrl === "/login")) {
+      navigate("/home");
+    }
+  }, []);
 
   const logIn = async (formData: ILoginFormData) => {
     try {
@@ -127,6 +136,7 @@ export function UserProvider({ children }: IChildren) {
         setLoginModal,
         closeLoginModal,
         logInModal,
+        token,
       }}
     >
       {children}

@@ -12,7 +12,7 @@ import { UserContext } from "../../providers/userContext";
 import { petContext } from "../../providers/petContext";
 
 export function Header() {
-  const { user } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const { setTextSearch, submitSearch, textSearch } = useContext(petContext);
 
   return (
@@ -55,7 +55,7 @@ export function Header() {
               size={"2.5rem"}
             />
             <div className="menuButtonOptions">
-              {!user ? (
+              {!token ? (
                 <>
                   <IconButton
                     id="registerButton"
