@@ -12,9 +12,9 @@ export function PetDetailsModal() {
     adoptPet,
     setPetDetailsModal,
     buttonIsDisabled,
-    setButtonIsDisabled,
+    setButtonIsDisabled,    
   } = useContext(petContext);
-  const { user, setLoginModal } = useContext(UserContext);
+  const { user, setLoginModal, tokenId } = useContext(UserContext);
 
   const setColor = (id: number) => {
     const colors = [
@@ -34,8 +34,6 @@ export function PetDetailsModal() {
       color = setColor(index);
     }
   }
-
-  console.log(buttonIsDisabled);
 
   return (
     <StyledPetModal role="dialog" className="dialog" url={petObject?.img}>
@@ -74,10 +72,11 @@ export function PetDetailsModal() {
             {petObject?.isAdopted ? (
               <p>ADOTADO! </p>
             ) : (
+              tokenId !== petObject.userId ? 
               <button
                 className="petAdopt"
                 disabled={buttonIsDisabled}
-                onClick={() => {
+                onClick={() => {                  
                   setPetDetailsModal(false);
                   user && !buttonIsDisabled
                     ? adoptPet(petObject?.id)
@@ -85,7 +84,7 @@ export function PetDetailsModal() {
                 }}
               >
                 Me adote!
-              </button>
+              </button> : <p>Você não pode adotar o animal que você cadastrou!</p>
             )}
           </div>
         </div>

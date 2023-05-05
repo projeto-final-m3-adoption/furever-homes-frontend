@@ -19,6 +19,8 @@ export interface IUserContext {
   setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
   closeLoginModal: () => void;
   logInModal: (formData: ILoginFormData) => Promise<void>;
+  tokenId: number;
+  tokenLocalStorage: string;
 }
 
 export interface IUser {
@@ -46,6 +48,8 @@ export function UserProvider({ children }: IChildren) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
+  const tokenId = Number(localStorage.getItem("@FHid"));
+  const tokenLocalStorage = localStorage.getItem("@FHtoken");
 
   const createUser: SubmitHandler<IRegisterFormData> = async (formData) => {
     delete formData.confirm;
@@ -127,6 +131,8 @@ export function UserProvider({ children }: IChildren) {
         setLoginModal,
         closeLoginModal,
         logInModal,
+        tokenId,
+        tokenLocalStorage,
       }}
     >
       {children}

@@ -12,6 +12,16 @@ export const StyledPetCard = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative;
+  }
+
+  .adopted-icon {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transform: rotate(25deg);
   }
 
   .pet-description-container {

@@ -17,7 +17,7 @@ import { AdoptedModal } from "../../components/Modal/AdoptedModal";
 
 export function Home() {
   const { petDetailsModal, petObject, adoptedModal } = useContext(petContext);
-  const { loginModal, user } = useContext(UserContext);
+  const { loginModal, user, tokenLocalStorage } = useContext(UserContext);
 
   return (
     <>
@@ -63,7 +63,7 @@ export function Home() {
       <Footer />
       {petDetailsModal ? <PetDetailsModal /> : null}
       {user && petObject ? <PetDetailsModal /> : null}
-      {loginModal ? <LoginModal /> : null}
+      {loginModal && !tokenLocalStorage ? <LoginModal /> : null}
       {adoptedModal ? <AdoptedModal /> : null}
     </>
   );
