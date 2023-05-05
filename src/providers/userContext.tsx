@@ -4,6 +4,7 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
+import jwtDecode from 'jwt-decode';
 
 export interface IChildren {
   children: React.ReactNode;
@@ -64,12 +65,32 @@ export function UserProvider({ children }: IChildren) {
     }
   };
 
+
   useEffect(() => {
-    const locationUrl = location.pathname;
-    if (token && (locationUrl === "/register" || locationUrl === "/login")) {
-      navigate("/home");
-    }
-  }, []);
+		async function loadUser() {
+			try {
+				const token = localStorage.getItem('@FHtoken');
+        const locationUrl = location.pathname;
+        if (token && (locationUrl === "/register" || locationUrl === "/login")) {
+          navigate("/home");
+        } else {
+          localStorage.removeItem('@FHtoken');
+          localStorage.removeItem('@FHid');
+          navigate("/login");
+        }
+				const { sub }:any = jwtDecode(token);
+				const { data } = await api.get(`/users/${sub}`, {
+					headers: {
+						authorization: `Bearer ${token}`,
+					},
+				});
+				setUser(data);
+			} catch (error) {
+				console.log(error);
+			} 
+		}
+		loadUser();
+	}, []);
 
   const logIn = async (formData: ILoginFormData) => {
     try {
