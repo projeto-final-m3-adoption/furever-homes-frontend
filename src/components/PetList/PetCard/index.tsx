@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { IIPet, petContext } from "../../../providers/petContext";
 import { StyledPetCard } from "./style";
-import { UserContext } from "../../../providers/userContext";
 import AdoptedIconPurple from "../../../assets/AdoptedIconPurple.svg";
 
 export interface IPetCardProps {
@@ -10,9 +9,8 @@ export interface IPetCardProps {
 }
 
 export function PetCard({ pet, index }: IPetCardProps) {
-  const { setPetDetailsModal, setPetObject, setButtonIsDisabled } =
+  const { setPetDetailsModal, setPetObject } =
     useContext(petContext);
-  const { tokenId } = useContext(UserContext);  
 
   const setColor = (id: number) => {
     const colors = [
@@ -32,9 +30,6 @@ export function PetCard({ pet, index }: IPetCardProps) {
         if (!pet.isAdopted) {
           setPetDetailsModal(true);
           setPetObject(pet);
-          if (tokenId === pet?.userId) {
-            setButtonIsDisabled(true);            
-          }
         }
       }}
     >

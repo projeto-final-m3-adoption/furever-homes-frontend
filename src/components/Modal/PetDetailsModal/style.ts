@@ -105,8 +105,11 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
         background-color: inherit;
         color: inherit;
         font-weight: bold;
-
-        :hover {
+        font-size: 1.125rem;
+        :disabled{
+          cursor: default;
+        }
+        :not(:disabled):hover {
           -webkit-animation: tracking-in-contract 0.8s
             cubic-bezier(0.215, 0.61, 0.355, 1) both;
           animation: tracking-in-contract 0.8s
