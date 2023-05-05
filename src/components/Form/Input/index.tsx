@@ -1,5 +1,4 @@
-import { ForwardedRef, InputHTMLAttributes, useState } from "react";
-import { forwardRef } from "react";
+import { forwardRef, ForwardedRef, InputHTMLAttributes, useState } from "react";
 import { StyledInputContainer } from "./style";
 
 export interface IInputComponentProps

@@ -48,11 +48,13 @@ export function PetDetailsModal() {
               <p>{petObject?.gender}</p>
             </span>
           </div>
-          <div className="petDescription">
-            <p>{petObject?.description}</p>
+          <div>
+            <p className="petDescription">{petObject?.description}</p>
           </div>
           <div>
-            {petObject?.adress ? <p className="petAddress">{petObject?.adress}</p> : null}
+            {petObject?.address ? (
+              <p className="petAddress">{petObject?.address}</p>
+            ) : null}
             {petObject?.isAdopted ? (
               <p>ADOTADO! </p>
             ) : (
