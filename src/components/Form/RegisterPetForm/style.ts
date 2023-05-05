@@ -20,10 +20,8 @@ export const StyledTextareaContainer = styled.div`
   }
 
   .regularInput {
-    /* width: calc(100% - 1.75rem); */
-    //SETAR EM 100% FAZ O TEXTAREA NÃO RESPEITAR O PADDING DO CONTAINER,
-    //SETAR 100% - O PADDING DIREITO TAMBÉM NÃO RESOLVEU, 90% FOI O MELHOR QUE ENCONTREI
-    width: 90%;
+    width: calc(100% - 1.75rem);
+    width: 100%;
     height: 4.75rem;
     font-family: inherit;
     background-color: var(--white);
