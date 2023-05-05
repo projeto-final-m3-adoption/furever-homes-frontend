@@ -54,8 +54,8 @@ export function PetDetailsModal() {
               <p>{petObject?.gender}</p>
             </span>
           </div>
-          <div className="petDescription">
-            <p>{petObject?.description}</p>
+          <div>
+            <p className="petDescription">{petObject?.description}</p>
           </div>
           <div>
             {petObject?.address ? (
