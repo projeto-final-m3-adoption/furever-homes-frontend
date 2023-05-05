@@ -63,7 +63,8 @@ export function UserProvider({ children }: IChildren) {
   };
 
   useEffect(() => {
-    if (token) {
+    const locationUrl = location.pathname;
+    if (token && (locationUrl === "/register" || locationUrl === "/login")) {
       navigate("/home");
     }
   }, []);
