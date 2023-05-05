@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledInputContainer = styled.div`
+export const StyledTextareaContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,45 +19,41 @@ export const StyledInputContainer = styled.div`
     padding-left: 0.625rem;
   }
 
-  .regularInput,
-  .passwordInput {
+  .regularInput {
+    width: calc(100% - 1.75rem);
     width: 100%;
-    height: 3.125rem;
+    height: 4.75rem;
+    font-family: inherit;
     background-color: var(--white);
     border: 1px solid var(--white);
     border-radius: var(--radius-20);
     color: var(--grey-6);
     padding: 0.875rem;
-    display: flex;
-    align-items: center;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    resize: none;
+    outline: none;
 
-    ::placeholder,
-    input::placeholder {
+    ::placeholder {
       color: var(--grey-3);
     }
 
     :focus-within {
       border: 1px solid var(--grey-4);
-      ::placeholder,
-      input::placeholder {
+
+      ::placeholder {
         color: var(--grey-6);
       }
     }
 
-    input {
-      background-color: inherit;
-      color: var(--grey-6);
-      height: 100%;
-      width: 100%;
-    }
-    img:hover {
-      filter: brightness(0.6);
-      cursor: pointer;
+    ::-webkit-scrollbar {
+      display: none;
     }
   }
 
   @media (min-width: 768.1px) {
     gap: 0.5rem;
+
     .label {
       font-size: 1rem;
       padding-left: 0.75rem;
@@ -68,11 +64,25 @@ export const StyledInputContainer = styled.div`
       padding-left: 0.75rem;
     }
 
-    .regularInput,
-    .passwordInput {
-      height: 3.75rem;
+    .regularInput {
       font-size: 1rem;
       padding: 1.125rem;
+      height: 6.875rem;
+
+      ::-webkit-scrollbar {
+        display: block;
+        background: transparent;
+        width: 0.25rem;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--grey-2);
+        border-radius: 0.125rem;
+      }
+
+      ::-webkit-scrollbar-track {
+        margin: 1.125rem 0;
+      }
     }
   }
 `;

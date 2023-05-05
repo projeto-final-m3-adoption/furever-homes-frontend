@@ -13,7 +13,7 @@ html, body, div, span, applet, object, iframe,
   article, aside, canvas, details, embed, 
   figure, figcaption, footer, header, hgroup, 
   menu, nav, output, ruby, section, summary,
-  time, mark, audio, video, button, input {
+  time, mark, audio, video, button, input, textarea {
     margin: 0;
     padding: 0;
     border: 0;

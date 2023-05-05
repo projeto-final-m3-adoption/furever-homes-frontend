@@ -14,10 +14,12 @@ import { PetDetailsModal } from "../../components/Modal/PetDetailsModal";
 import { LoginModal } from "../../components/Modal/LoginModal";
 import { UserContext } from "../../providers/userContext";
 import { AdoptedModal } from "../../components/Modal/AdoptedModal";
+import { RegisterPetModal } from "../../components/Modal/RegisterPetModal";
 
 export function Home() {
-  const { petDetailsModal, petObject, adoptedModal } = useContext(petContext);
-  const { loginModal, user, tokenLocalStorage } = useContext(UserContext);
+  const { registerPetModal, petDetailsModal, petObject, adoptedModal } =
+    useContext(petContext);
+  const { loginModal, token } = useContext(UserContext);
 
   return (
     <>
@@ -61,9 +63,10 @@ export function Home() {
         </section>
       </StyledHome>
       <Footer />
+      {registerPetModal ? <RegisterPetModal /> : null}
       {petDetailsModal ? <PetDetailsModal /> : null}
-      {user && petObject ? <PetDetailsModal /> : null}
-      {loginModal && !tokenLocalStorage ? <LoginModal /> : null}
+      {token && petObject ? <PetDetailsModal /> : null}
+      {loginModal ? <LoginModal /> : null}
       {adoptedModal ? <AdoptedModal /> : null}
     </>
   );

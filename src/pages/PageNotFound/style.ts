@@ -11,9 +11,6 @@ export const StyledPageNotFound = styled.main`
     .desktopImg {
       display: none;
     }
-
-    .mobileImg {
-    }
   }
 
   .pageNotFoundMessages {

@@ -13,7 +13,7 @@ export function PetDetailsModal() {
 		adoptPet,
 		setPetDetailsModal,
 	} = useContext(petContext);
-	const { user, setLoginModal, tokenId } = useContext(UserContext);
+	const { token, setLoginModal, tokenId } = useContext(UserContext);
 
 	const setColor = (id: number) => {
 		const colors = [
@@ -63,7 +63,7 @@ export function PetDetailsModal() {
 						<p>{petObject?.description}</p>
 					</div>
 					<div>
-						<p className="petAddress">{petObject?.adress}</p>
+						<p className="petAddress">{petObject?.address}</p>
 						<button
 							className="petAdopt"
 							onClick={() => {
@@ -72,32 +72,10 @@ export function PetDetailsModal() {
 									? toast.error(
 											"Você não pode adotar um animal que você cadastrou!"
 									  )
-									: user ? adoptPet(petObject?.id) : setLoginModal(true);
+									: token ? adoptPet(petObject?.id) : setLoginModal(true);
 							}}>
 							Me adote!
 						</button>
-            {/* <button
-							className="petAdopt"
-							disabled={petObject?.userId === tokenId}
-							onClick={() => {
-								setPetDetailsModal(false);
-								user ? adoptPet(petObject?.id) : setLoginModal(true);
-							}}>
-							Me adote!
-						</button> */}
-						{/* {petObject?.userId === tokenId ?
-            <p>Você não pode adotar um animal que você cadastrou!</p>
-						: 
-            <button
-							className="petAdopt"
-							disabled={petObject?.userId === tokenId}
-							onClick={() => {
-								setPetDetailsModal(false);
-								user ? adoptPet(petObject?.id) : setLoginModal(true);
-							}}>
-							Me adote!
-						</button>
-            } */}
 					</div>
 				</div>
 			</div>
