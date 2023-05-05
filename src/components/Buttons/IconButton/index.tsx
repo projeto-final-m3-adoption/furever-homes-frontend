@@ -2,6 +2,8 @@ import { StyledIconButton, StyledLink } from "./style";
 import { useContext } from "react";
 import { UserContext } from "../../../providers/userContext";
 import { petContext } from "../../../providers/petContext";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 export interface IIconButtonProps {
   id?: string;
@@ -39,6 +41,7 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
   }
 
   return (
+    <>
     <StyledIconButton size={size} className="roundButtonContainer">
       {button ? (
         <button
@@ -63,5 +66,7 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
         </StyledLink>
       )}
     </StyledIconButton>
+    <Tooltip anchorSelect=".tooltip" place="bottom" />
+    </>
   );
 }
