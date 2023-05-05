@@ -13,8 +13,9 @@ export const StyledFormButton = styled.button`
   color: var(--white);
   font-weight: 600;
   font-size: 1.375rem;
-  #smallFormButton {
-    font-size: 1.125rem;
+
+  .smallFormButton {
+    font-size: 1rem;
   }
 
   :hover {
@@ -28,8 +29,9 @@ export const StyledFormButton = styled.button`
   @media (min-width: 768.1px) {
     height: 4.125rem;
     font-size: 1.75rem;
-    #smallFormButton {
-      font-size: 1.5rem;
+
+    .smallFormButton {
+      font-size: 1.125rem;
     }
   }
 `;
