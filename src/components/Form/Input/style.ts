@@ -48,15 +48,8 @@ export const StyledInputContainer = styled.div`
       background-color: inherit;
       color: var(--grey-6);
       height: 100%;
-      /* width: calc(100% - 0.75rem); */
       width: 100%;
     }
-    /* .passwordInput:focus {
-			img:hover {
-				filter: brightness(0.5);
-				cursor: pointer;
-			}
-		} */
     img:hover {
       filter: brightness(0.6);
       cursor: pointer;
@@ -80,12 +73,6 @@ export const StyledInputContainer = styled.div`
       height: 3.75rem;
       font-size: 1rem;
       padding: 1.125rem;
-      /* input {
-				width: calc(100% - 0.875rem);
-			}
-			img {
-				width: 0.875rem;
-			} */
     }
   }
 `;

@@ -12,7 +12,7 @@ export interface IIPet {
 	size: string;
 	img: string;
 	description: string;
-	adress: string;
+	address: string;
 	isAdopted: boolean;
 	userId: any;
 	id: any;
@@ -30,8 +30,8 @@ interface IIPetFull {
 	petsSearchFilter: IIPet[];
 	setPetsSearchFilter: React.Dispatch<React.SetStateAction<IIPet[]>>;
 	filterButtons: (icon: string) => void;
-	openModalNewPet: boolean;
-	setOpenModalNewPet: React.Dispatch<React.SetStateAction<boolean>>;
+	registerPetModal: boolean;
+	setRegisterPetModal: React.Dispatch<React.SetStateAction<boolean>>;
 	adoptPet: (petId: number | string | undefined | null) => Promise<void>;
 	petObject: IIPet | null | undefined;
 	setPetObject: React.Dispatch<React.SetStateAction<IIPet | null | undefined>>;
@@ -66,7 +66,7 @@ export function PetProvider() {
 	const [petFull, setPetFull] = useState<IIPet[]>([]);
 	const [textSearch, setTextSearch] = useState("");
 	const [petsSearchFilter, setPetsSearchFilter] = useState<IIPet[]>([]);
-	const [openModalNewPet, setOpenModalNewPet] = useState(false);
+	const [registerPetModal, setRegisterPetModal] = useState(false);
 	const [petDetailsModal, setPetDetailsModal] = useState(false);
 	const [petObject, setPetObject] = useState<IIPet | null>();
 	const [adoptedModal, setAdoptedModal] = useState(false);
@@ -74,7 +74,7 @@ export function PetProvider() {
 	async function loadPets() {
 		try {
 			const response = await api.get("/pet");
-			setPetFull(response.data);
+			setPetFull(response.data.reverse());
 		} catch (error) {
 			console.log(error);
 		}
@@ -87,12 +87,14 @@ export function PetProvider() {
 	const createNewPet: SubmitHandler<
 		IRegisterNewPetFormData
 	> = async formData => {
-		const userId = Number(localStorage.getItem("@FUREVERHOMES@ID"));
+		const userId = Number(localStorage.getItem("@FHid"));
 		const newFormData = { ...formData, isAdopted: false, userId: userId };
 
 		try {
 			await api.post("/pet", newFormData);
 			loadPets();
+			setRegisterPetModal(false);
+			toast.success("Pet cadastrado com sucesso!");
 		} catch (error) {
 			console.log(error);
 		}
@@ -106,7 +108,6 @@ export function PetProvider() {
 				pet.name.toLowerCase().includes(textSearch.toLowerCase()) ||
 				pet.age.toLowerCase().includes(textSearch.toLowerCase())
 		);
-
 		petsFilter.length === 0
 			? toast.error("Nenhum pet encontrado")
 			: setPetsSearchFilter(petsFilter);
@@ -171,8 +172,8 @@ export function PetProvider() {
 				setPetsSearchFilter,
 				filterButtons,
 				createNewPet,
-				openModalNewPet,
-				setOpenModalNewPet,
+				registerPetModal,
+				setRegisterPetModal,
 				adoptPet,
 				petObject,
 				setPetObject,
