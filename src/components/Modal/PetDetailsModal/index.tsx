@@ -5,14 +5,8 @@ import CloseIcon from "../../../assets/CloseIconBK.svg";
 import { UserContext } from "../../../providers/userContext";
 
 export function PetDetailsModal() {
-  const {
-    petFull,
-    petObject,
-    closePetDetailsModal,
-    adoptPet,
-    setPetDetailsModal,
-  } = useContext(petContext);
-  const { user, setLoginModal } = useContext(UserContext);
+  const { petFull, petObject, closePetDetailsModal, adoptPet, setPetDetailsModal } = useContext(petContext);
+  const { token, setLoginModal } = useContext(UserContext);
 
   const setColor = (id: number) => {
     const colors = [
@@ -58,9 +52,7 @@ export function PetDetailsModal() {
             <p>{petObject?.description}</p>
           </div>
           <div>
-            {petObject?.adress ? (
-              <p className="petAddress">{petObject?.adress}</p>
-            ) : null}
+            {petObject?.adress ? <p className="petAddress">{petObject?.adress}</p> : null}
             {petObject?.isAdopted ? (
               <p>ADOTADO! </p>
             ) : (
@@ -68,7 +60,7 @@ export function PetDetailsModal() {
                 className="petAdopt"
                 onClick={() => {
                   setPetDetailsModal(false);
-                  user ? adoptPet(petObject?.id) : setLoginModal(true);
+                  token ? adoptPet(petObject?.id) : setLoginModal(true);
                 }}
               >
                 Me adote!

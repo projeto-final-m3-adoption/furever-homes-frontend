@@ -12,7 +12,7 @@ import { UserContext } from "../../providers/userContext";
 import { petContext } from "../../providers/petContext";
 
 export function Header() {
-  const { user } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const { setTextSearch, submitSearch, textSearch } = useContext(petContext);
 
   return (
@@ -31,46 +31,18 @@ export function Header() {
                 onChange={(event) => setTextSearch(event.target.value)}
               />
               <button type="submit">
-                <img
-                  src={SearchInput}
-                  alt="Pesquisar"
-                  className="search-icon-button"
-                />
+                <img src={SearchInput} alt="Pesquisar" className="search-icon-button" />
               </button>
             </form>
-            <IconButton
-              id="searchIcon"
-              button={true}
-              img={SearchIcon}
-              alt={"Pesquisar"}
-              size={"4rem"}
-            />
+            <IconButton id="searchIcon" button={true} img={SearchIcon} alt={"Pesquisar"} size={"4rem"} />
           </div>
           <div className="dropdownMenuOptions">
-            <IconButton
-              id="menuButton"
-              button={true}
-              img={MenuIcon}
-              alt={"Abrir menu"}
-              size={"2.5rem"}
-            />
+            <IconButton id="menuButton" button={true} img={MenuIcon} alt={"Abrir menu"} size={"2.5rem"} />
             <div className="menuButtonOptions">
-              {!user ? (
+              {!token ? (
                 <>
-                  <IconButton
-                    id="registerButton"
-                    button={false}
-                    img={RegisterIcon}
-                    alt={"Registro"}
-                    size={"4rem"}
-                  />
-                  <IconButton
-                    id="loginButton"
-                    button={false}
-                    img={LoginIcon}
-                    alt={"Login"}
-                    size={"4rem"}
-                  />
+                  <IconButton id="registerButton" button={false} img={RegisterIcon} alt={"Registro"} size={"4rem"} />
+                  <IconButton id="loginButton" button={false} img={LoginIcon} alt={"Login"} size={"4rem"} />
                 </>
               ) : (
                 <>
@@ -81,13 +53,7 @@ export function Header() {
                     alt={"Registro do pet"}
                     size={"4.5rem"}
                   />
-                  <IconButton
-                    id="logoutButton"
-                    button={true}
-                    img={LogoutIcon}
-                    alt={"Logout"}
-                    size={"4.5rem"}
-                  />
+                  <IconButton id="logoutButton" button={true} img={LogoutIcon} alt={"Logout"} size={"4.5rem"} />
                 </>
               )}
             </div>

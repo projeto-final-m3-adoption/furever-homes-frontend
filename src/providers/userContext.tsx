@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ export interface IUserContext {
   setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
   closeLoginModal: () => void;
   logInModal: (formData: ILoginFormData) => Promise<void>;
+  token: string;
 }
 
 export interface IUser {
@@ -46,6 +47,7 @@ export function UserProvider({ children }: IChildren) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
+  const token = localStorage.getItem("@FHtoken");
 
   const createUser: SubmitHandler<IRegisterFormData> = async (formData) => {
     delete formData.confirm;
@@ -60,16 +62,19 @@ export function UserProvider({ children }: IChildren) {
     }
   };
 
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, []);
+
   const logIn = async (formData: ILoginFormData) => {
     try {
       const response = await api.post("/login", formData);
       if (response.data.accessToken) {
         api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
         setUser(response.data.user);
-        localStorage.setItem(
-          "@FHtoken",
-          JSON.stringify(response.data.accessToken)
-        );
+        localStorage.setItem("@FHtoken", JSON.stringify(response.data.accessToken));
         localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
         toast.success("Usuário logado com sucesso");
         navigate("/");
@@ -89,10 +94,7 @@ export function UserProvider({ children }: IChildren) {
       if (response.data.accessToken) {
         api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
         setUser(response.data.user);
-        localStorage.setItem(
-          "@FHtoken",
-          JSON.stringify(response.data.accessToken)
-        );
+        localStorage.setItem("@FHtoken", JSON.stringify(response.data.accessToken));
         localStorage.setItem("@FHid", JSON.stringify(response.data.user.id));
         toast.success("Usuário logado com sucesso");
       }
@@ -127,6 +129,7 @@ export function UserProvider({ children }: IChildren) {
         setLoginModal,
         closeLoginModal,
         logInModal,
+        token,
       }}
     >
       {children}

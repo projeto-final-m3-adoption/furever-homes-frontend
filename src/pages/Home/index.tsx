@@ -17,7 +17,7 @@ import { AdoptedModal } from "../../components/Modal/AdoptedModal";
 
 export function Home() {
   const { petDetailsModal, petObject, adoptedModal } = useContext(petContext);
-  const { loginModal, user } = useContext(UserContext);
+  const { loginModal, token } = useContext(UserContext);
 
   return (
     <>
@@ -27,42 +27,18 @@ export function Home() {
         <section className="petListContainer">
           <div className="petListHeader">
             <div className="petListFilters">
-              <IconButton
-                button={true}
-                img={dogIcon}
-                alt={"Filtrar por cachorros"}
-                size={"4rem"}
-                id={"dogIcon"}
-              />
-              <IconButton
-                button={true}
-                img={catIcon}
-                alt={"Filtrar por gatos"}
-                size={"4rem"}
-                id={"catIcon"}
-              />
-              <IconButton
-                button={true}
-                img={rabbitIcon}
-                alt={"Filtrar por outros"}
-                size={"4rem"}
-                id={"rabbitIcon"}
-              />
+              <IconButton button={true} img={dogIcon} alt={"Filtrar por cachorros"} size={"4rem"} id={"dogIcon"} />
+              <IconButton button={true} img={catIcon} alt={"Filtrar por gatos"} size={"4rem"} id={"catIcon"} />
+              <IconButton button={true} img={rabbitIcon} alt={"Filtrar por outros"} size={"4rem"} id={"rabbitIcon"} />
             </div>
-            <IconButton
-              button={true}
-              img={resetButton}
-              alt={"Resetar filtro"}
-              size={"4rem"}
-              id={"buttonReset"}
-            />
+            <IconButton button={true} img={resetButton} alt={"Resetar filtro"} size={"4rem"} id={"buttonReset"} />
           </div>
           <PetList />
         </section>
       </StyledHome>
       <Footer />
       {petDetailsModal ? <PetDetailsModal /> : null}
-      {user && petObject ? <PetDetailsModal /> : null}
+      {token && petObject ? <PetDetailsModal /> : null}
       {loginModal ? <LoginModal /> : null}
       {adoptedModal ? <AdoptedModal /> : null}
     </>
