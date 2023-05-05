@@ -1,7 +1,6 @@
-// import { useContext } from "react";
-// import { petContext } from "../../../providers/petContext";
 import { StyledAdoptedModal } from "./style";
 import AdoptedImg from "../../../assets/Adopted.svg";
+import { Fireworks } from "@fireworks-js/react";
 
 export function AdoptedModal() {
   return (
@@ -10,6 +9,21 @@ export function AdoptedModal() {
         <p>Seu melhor amigo chegou!!!</p>
         <img src={AdoptedImg} alt="" />
       </figure>
+      <Fireworks
+        options={{
+          rocketsPoint: {
+            min: 0,
+            max: 100,
+          },
+        }}
+        style={{
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          position: "fixed",
+        }}
+      />
     </StyledAdoptedModal>
   );
 }

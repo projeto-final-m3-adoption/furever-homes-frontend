@@ -16,8 +16,8 @@ export const StyledAdoptedModal = styled.div`
     margin: 0 auto;
     width: 90%;
     min-width: 18.75rem;
-    max-width: 27.625rem;
-    height: fit-content;
+    max-width: 37.5rem;
+    height: auto;
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
@@ -30,14 +30,14 @@ export const StyledAdoptedModal = styled.div`
     img {
       object-fit: cover;
       object-position: center;
-      height: 23.75rem;
+      height: auto;
       width: 100%;
     }
 
     p {
       font-family: "Fredericka the Great", cursive;
       color: var(--secondary);
-      font-size: 1.875rem;
+      font-size: 2.5rem;
       text-align: center;
     }
   }

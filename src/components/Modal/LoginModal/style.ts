@@ -11,4 +11,8 @@ export const StyledLoginModal = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  .form-container-margin {
+    margin: 0 auto;
+  }
 `;

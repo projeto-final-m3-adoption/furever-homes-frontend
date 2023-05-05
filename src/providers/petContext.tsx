@@ -130,7 +130,7 @@ export function PetProvider() {
 
 	function openAdoptedModal() {
 		setAdoptedModal(true);
-		setTimeout(() => setAdoptedModal(false), 10000);
+		setTimeout(() => setAdoptedModal(false), 5000);
 	}
 
 	async function adoptPet(petId: number | string | undefined | null) {
