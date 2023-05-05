@@ -9,8 +9,17 @@ import { PetList } from "../../components/PetList";
 import { Footer } from "../../components/Footer";
 import { IconButton } from "../../components/Buttons/IconButton";
 import { RegisterNewPetForm } from "../../components/Form/RegisterNewPetForm";
+import { useContext } from "react";
+import { petContext } from "../../providers/petContext";
+import { PetDetailsModal } from "../../components/Modal/PetDetailsModal";
+import { LoginModal } from "../../components/Modal/LoginModal";
+import { UserContext } from "../../providers/userContext";
+import { AdoptedModal } from "../../components/Modal/AdoptedModal";
 
 export function Home() {
+  const { petDetailsModal, petObject, adoptedModal } = useContext(petContext);
+  const { loginModal, user } = useContext(UserContext);
+
   return (
     <>
       <Header />
@@ -30,6 +39,10 @@ export function Home() {
         </section>
       </StyledHome>
       <Footer />
+      {petDetailsModal ? <PetDetailsModal /> : null}
+      {user && petObject ? <PetDetailsModal /> : null}
+      {loginModal ? <LoginModal /> : null}
+      {adoptedModal ? <AdoptedModal /> : null}
     </>
   );
 }

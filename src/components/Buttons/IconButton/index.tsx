@@ -12,7 +12,7 @@ export interface IIconButtonProps {
 }
 
 export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
-  const { logOut } = useContext(UserContext);
+  const { logOut, setLoginModal } = useContext(UserContext);
   const { filterButtons, setOpenModalNewPet } = useContext(petContext);
 
   function onButtonClick(alt: string) {
@@ -26,6 +26,10 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
       ? filterButtons("outros")
       : alt === "Resetar filtro"
       ? filterButtons("")
+      : alt === "Cadastrar pet"
+      ? null // FUNÇÃO DE ABRIR MODAL DE CADASTRO DO PET;
+      : alt === "Fechar login"
+      ? setLoginModal(false)
       : null;
   }
 
@@ -35,10 +39,6 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
         <button
           className="roundButton"
           id={id}
-          // onClick={() => {
-          // 	alt === "Logout" ? logOut() : null;
-          // }}
-
           onClick={() => {
             onButtonClick(alt);
             {

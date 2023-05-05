@@ -99,6 +99,11 @@ export const StyledHeader = styled.header`
     }
   }
 
+  .search-icon-button {
+    width: 1.5625rem;
+    height: auto;
+  }
+
   @media (min-width: 768.1px) {
     height: 6rem;
 

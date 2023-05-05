@@ -53,12 +53,13 @@ html, body, div, span, applet, object, iframe,
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--grey-6);
-    margin-bottom: 3.125rem;
   }
 
   #root {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     margin: 0;
   }
 

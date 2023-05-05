@@ -7,6 +7,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
 
   .footer-paragraph {
     font-size: 0.75rem;

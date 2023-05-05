@@ -31,7 +31,11 @@ export function Header() {
                 onChange={(event) => setTextSearch(event.target.value)}
               />
               <button type="submit">
-                <img src={SearchInput} alt="Pesquisar" />
+                <img
+                  src={SearchInput}
+                  alt="Pesquisar"
+                  className="search-icon-button"
+                />
               </button>
             </form>
             <IconButton id="searchIcon" button={true} img={SearchIcon} alt={"Pesquisar"} size={"4rem"} />
