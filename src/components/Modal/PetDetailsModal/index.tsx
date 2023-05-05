@@ -11,6 +11,8 @@ export function PetDetailsModal() {
     closePetDetailsModal,
     adoptPet,
     setPetDetailsModal,
+    buttonIsDisabled,
+    setButtonIsDisabled,
   } = useContext(petContext);
   const { user, setLoginModal } = useContext(UserContext);
 
@@ -33,10 +35,18 @@ export function PetDetailsModal() {
     }
   }
 
+  console.log(buttonIsDisabled);
+
   return (
     <StyledPetModal role="dialog" className="dialog" url={petObject?.img}>
       <div className={petObject?.isAdopted ? "isAdopted" : "petModal"}>
-        <button className="closeModal" onClick={() => closePetDetailsModal()}>
+        <button
+          className="closeModal"
+          onClick={() => {
+            closePetDetailsModal();
+            setButtonIsDisabled(false);
+          }}
+        >
           <img src={CloseIcon} alt="Fechar" />
         </button>
         <div className="petImg"></div>
@@ -66,9 +76,12 @@ export function PetDetailsModal() {
             ) : (
               <button
                 className="petAdopt"
+                disabled={buttonIsDisabled}
                 onClick={() => {
                   setPetDetailsModal(false);
-                  user ? adoptPet(petObject?.id) : setLoginModal(true);
+                  user && !buttonIsDisabled
+                    ? adoptPet(petObject?.id)
+                    : setLoginModal(true);
                 }}
               >
                 Me adote!

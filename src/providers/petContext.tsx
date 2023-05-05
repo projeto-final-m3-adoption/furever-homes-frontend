@@ -34,6 +34,8 @@ interface IIPetFull {
   setPetDetailsModal: React.Dispatch<React.SetStateAction<boolean>>;
   closePetDetailsModal(): void;
   adoptedModal: boolean;
+  buttonIsDisabled: boolean;
+  setButtonIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const petContext = createContext({} as IIPetFull);
@@ -45,6 +47,7 @@ export function PetProvider() {
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
   const [adoptedModal, setAdoptedModal] = useState(false);
+  const [buttonIsDisabled, setButtonIsDisabled] = useState(false);
 
   async function loadPets() {
     try {
@@ -138,6 +141,8 @@ export function PetProvider() {
         setPetDetailsModal,
         closePetDetailsModal,
         adoptedModal,
+        buttonIsDisabled,
+        setButtonIsDisabled,
       }}
     >
       <Outlet />
