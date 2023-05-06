@@ -22,7 +22,9 @@ export const StyledFormButton = styled.button`
   }
 
   :disabled {
-    background-color: var(--disabled);
+    background-color: var(--primary);
+    filter: brightness(0.8);
+    cursor: default;
   }
 
   @media (min-width: 768.1px) {

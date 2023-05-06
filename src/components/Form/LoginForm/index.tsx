@@ -17,10 +17,13 @@ export function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, dirtyFields, isSubmitting },
   } = useForm<ILoginFormData>({
+    defaultValues: { email: '', password: '' },
     resolver: zodResolver(loginSchema),
   });
+
+	const emptyInputs = Object.values(dirtyFields).length < 2 ? true : false;
 
   return (
     <StyledForm className="formContainer">
@@ -53,7 +56,10 @@ export function LoginForm() {
           {...register("password")}
           error={errors.password?.message}
         />
-        <FormButton text="Login" />
+        <FormButton
+        disabled={isSubmitting || emptyInputs}
+        text="Login"
+        />
       </form>
       <span className="formFooter">
         <p>Ainda não tem conta?</p>

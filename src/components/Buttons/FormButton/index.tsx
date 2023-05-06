@@ -1,14 +1,16 @@
+// import { ButtonHTMLAttributes } from "react";
 import { StyledFormButton } from "./style";
 
 export interface IFormButtonProps {
   text: string;
   id?: string;
   customClass?: string;
+  disabled: boolean;
 }
 
-export function FormButton({ text, id, customClass }: IFormButtonProps) {
+export function FormButton({ text, id, customClass, disabled }: IFormButtonProps) {
   return (
-    <StyledFormButton id={id}>
+    <StyledFormButton id={id} disabled={disabled}>
       <span className={customClass}>{text}</span>
     </StyledFormButton>
   );
