@@ -22,6 +22,7 @@ export interface IUserContext {
   logInModal: (formData: ILoginFormData) => Promise<void>;
   tokenId: number;
   token: string;
+  loading: boolean;
 }
 
 export interface IUser {
@@ -49,6 +50,7 @@ export function UserProvider({ children }: IChildren) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
+	const [loading, setLoading] = useState(true);
   const tokenId = Number(localStorage.getItem("@FHid"));
   const token = localStorage.getItem("@FHtoken");
 
@@ -69,15 +71,12 @@ export function UserProvider({ children }: IChildren) {
   useEffect(() => {
 		async function loadUser() {
 			try {
-				const token = localStorage.getItem('@FHtoken');
         const locationUrl = location.pathname;
         if (token && (locationUrl === "/register" || locationUrl === "/login")) {
           navigate("/home");
-        } else {
-          localStorage.removeItem('@FHtoken');
-          localStorage.removeItem('@FHid');
-          navigate("/login");
         }
+        localStorage.removeItem('@FHtoken');
+        localStorage.removeItem('@FHid');
 				const { sub }:any = jwtDecode(token);
 				const { data } = await api.get(`/users/${sub}`, {
 					headers: {
@@ -87,7 +86,9 @@ export function UserProvider({ children }: IChildren) {
 				setUser(data);
 			} catch (error) {
 				console.log(error);
-			} 
+			} finally {
+				setLoading(false);
+			}
 		}
 		loadUser();
 	}, []);
@@ -161,6 +162,7 @@ export function UserProvider({ children }: IChildren) {
         logInModal,
         tokenId,
         token,
+        loading,
       }}
     >
       {children}

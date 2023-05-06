@@ -12,8 +12,12 @@ import { UserContext } from "../../providers/userContext";
 import { petContext } from "../../providers/petContext";
 
 export function Header() {
-  const { token } = useContext(UserContext);
+  const { token, loading } = useContext(UserContext);
   const { setTextSearch, submitSearch, textSearch } = useContext(petContext);
+
+  if (loading) {
+		return;
+	}
 
   return (
     <StyledHeader>
