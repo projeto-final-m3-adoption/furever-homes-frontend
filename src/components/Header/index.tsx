@@ -14,12 +14,8 @@ import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
 export function Header() {
-  const { token, loading } = useContext(UserContext);
+  const { token } = useContext(UserContext);
   const { setTextSearch, submitSearch, textSearch } = useContext(petContext);
-
-  if (loading) {
-    return;
-  }
 
   return (
     <>

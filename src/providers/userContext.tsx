@@ -78,9 +78,7 @@ export function UserProvider({ children }: IChildren) {
         ) {
           navigate("/home");
         }
-        localStorage.removeItem("@FHtoken");
-        localStorage.removeItem("@FHid");
-
+        
         const { sub }: any = jwtDecode(token);
         const { data } = await api.get(`/users/${sub}`, {
           headers: {
@@ -89,6 +87,8 @@ export function UserProvider({ children }: IChildren) {
         });
         setUser(data);
       } catch (error) {
+        localStorage.removeItem("@FHtoken");
+        localStorage.removeItem("@FHid");
         const currentError = error as AxiosError<string>;
         toast.error(currentError.response?.data);
         console.log(error);
