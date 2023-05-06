@@ -17,7 +17,6 @@ export interface IUserContext {
   logOut: () => void;
   loginModal: boolean;
   setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
-  closeLoginModal: () => void;
   logInModal: (formData: ILoginFormData) => Promise<void>;
   tokenId: number;
   token: string;
@@ -150,10 +149,6 @@ export function UserProvider({ children }: IChildren) {
     navigate("/");
   }
 
-  function closeLoginModal() {
-    setLoginModal(false);
-  }
-
   return (
     <UserContext.Provider
       value={{
@@ -164,7 +159,6 @@ export function UserProvider({ children }: IChildren) {
         setUser,
         loginModal,
         setLoginModal,
-        closeLoginModal,
         logInModal,
         tokenId,
         token,
