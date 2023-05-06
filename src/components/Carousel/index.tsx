@@ -12,7 +12,7 @@ export function Carousel() {
         onDragStart={handleDragStart}
         role="presentation"
       >
-        Adopting a pet is a purrfect way to add some extra fur to your family!
+        Amor de verdade não se compra, se encontra!
       </p>
     </div>,
     <div className="carousel-container green-container">
@@ -21,7 +21,7 @@ export function Carousel() {
         onDragStart={handleDragStart}
         role="presentation"
       >
-        Adopting a pet is a pawsome decision!
+        Ter pena não adianta! Dê água e alimento aos animais de rua!
       </p>
     </div>,
     <div className="carousel-container blue-container">
@@ -30,7 +30,36 @@ export function Carousel() {
         onDragStart={handleDragStart}
         role="presentation"
       >
-        Onde amantes de animais encontram seus novos amigos!
+        Furever Homes: Onde amantes de animais encontram seus novos amigos!
+      </p>
+    </div>,
+    <div className="carousel-container orange-container">
+      <p
+        className="carousel-paragraph"
+        onDragStart={handleDragStart}
+        role="presentation"
+      >
+        Adoção é coisa séria: "Prometo ser fiel, te amar e te respeitar... Na
+        alegria e na tristeza, na saúde e na doença".
+      </p>
+    </div>,
+    <div className="carousel-container green-container">
+      <p
+        className="carousel-paragraph"
+        onDragStart={handleDragStart}
+        role="presentation"
+      >
+        Faça seu papel: Tire um animal da rua e coloque-o para adoção aqui no
+        nosso site!
+      </p>
+    </div>,
+    <div className="carousel-container blue-container">
+      <p
+        className="carousel-paragraph"
+        onDragStart={handleDragStart}
+        role="presentation"
+      >
+        Feira de adoção: Encontre aqui seu novo melhor amigo!
       </p>
     </div>,
   ];
