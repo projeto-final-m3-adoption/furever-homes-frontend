@@ -4,7 +4,6 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
-import jwtDecode from "jwt-decode";
 
 export interface IChildren {
   children: React.ReactNode;
@@ -18,7 +17,6 @@ export interface IUserContext {
   logOut: () => void;
   loginModal: boolean;
   setLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
-  closeLoginModal: () => void;
   logInModal: (formData: ILoginFormData) => Promise<void>;
   tokenId: number;
   token: string;
@@ -52,7 +50,35 @@ export function UserProvider({ children }: IChildren) {
   const [loginModal, setLoginModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const tokenId = Number(localStorage.getItem("@FHid"));
-  const token = localStorage.getItem("@FHtoken");
+  const token = JSON.parse(localStorage.getItem("@FHtoken"));
+
+  async function loadUser() {
+    try {
+      const { data } = await api.get(`/users/${tokenId}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(data);
+    } catch (error) {
+      setUser(null);
+      localStorage.removeItem("@FHtoken");
+      localStorage.removeItem("@FHid");
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
+      navigate("/");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    const locationUrl = location.pathname;
+    if (token && (locationUrl === "/register" || locationUrl === "/login")) {
+      navigate("/home");
+    }
+    token ? loadUser() : setLoading(false);
+  }, []);
 
   async function createUser(formData: IRegisterFormData) {
     delete formData.confirm;
@@ -67,37 +93,6 @@ export function UserProvider({ children }: IChildren) {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    async function loadUser() {
-      try {
-        const locationUrl = location.pathname;
-        if (
-          token &&
-          (locationUrl === "/register" || locationUrl === "/login")
-        ) {
-          navigate("/home");
-        }
-        localStorage.removeItem("@FHtoken");
-        localStorage.removeItem("@FHid");
-
-        const { sub }: any = jwtDecode(token);
-        const { data } = await api.get(`/users/${sub}`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-        setUser(data);
-      } catch (error) {
-        const currentError = error as AxiosError<string>;
-        toast.error(currentError.response?.data);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadUser();
-  }, []);
 
   async function logIn(formData: ILoginFormData) {
     try {
@@ -154,10 +149,6 @@ export function UserProvider({ children }: IChildren) {
     navigate("/");
   }
 
-  function closeLoginModal() {
-    setLoginModal(false);
-  }
-
   return (
     <UserContext.Provider
       value={{
@@ -168,7 +159,6 @@ export function UserProvider({ children }: IChildren) {
         setUser,
         loginModal,
         setLoginModal,
-        closeLoginModal,
         logInModal,
         tokenId,
         token,
