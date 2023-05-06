@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 export interface IIPet {
   name: string;
@@ -70,6 +71,8 @@ export function PetProvider() {
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
   const [adoptedModal, setAdoptedModal] = useState(false);
+  const token = JSON.parse(localStorage.getItem("@FHtoken"));
+  const navigate = useNavigate();
 
   async function loadPets() {
     try {
@@ -91,13 +94,22 @@ export function PetProvider() {
     const newFormData = { ...formData, isAdopted: false, userId: userId };
 
     try {
-      await api.post("/pet", newFormData);
+      await api.post("/pet", newFormData, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       loadPets();
       setRegisterPetModal(false);
       toast.success("Pet cadastrado com sucesso!");
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
+      if (currentError.response?.status == 401) {
+        localStorage.removeItem("@FHtoken");
+        localStorage.removeItem("@FHid");
+        navigate("/");
+      }
       console.log(error);
     }
   }
@@ -160,6 +172,11 @@ export function PetProvider() {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
+      if (currentError.response?.status == 401) {
+        localStorage.removeItem("@FHtoken");
+        localStorage.removeItem("@FHid");
+        navigate("/");
+      }
       console.log(error);
     }
   }
