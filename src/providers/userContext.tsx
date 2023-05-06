@@ -54,6 +54,35 @@ export function UserProvider({ children }: IChildren) {
   const tokenId = Number(localStorage.getItem("@FHid"));
   const token = localStorage.getItem("@FHtoken");
 
+  async function loadUser() {
+		try {
+			const { sub }: any = jwtDecode(token);
+			const { data } = await api.get(`/users/${sub}`, {
+				headers: {
+					authorization: `Bearer ${token}`,
+				},
+			});
+			setUser(data);
+		} catch (error) {
+			setUser(null);
+			localStorage.removeItem("@FHtoken");
+			localStorage.removeItem("@FHid");
+			const currentError = error as AxiosError<string>;
+			toast.error(currentError.response?.data);
+			console.log(error);
+		} finally {
+			setLoading(false);
+		}
+	}
+
+useEffect(() => {
+	const locationUrl = location.pathname;
+	if (token && (locationUrl === "/register" || locationUrl === "/login")) {
+		navigate("/home");
+	}
+	token ? loadUser() : setLoading(false);
+}, []);
+
   async function createUser(formData: IRegisterFormData) {
     delete formData.confirm;
 
@@ -67,37 +96,6 @@ export function UserProvider({ children }: IChildren) {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    async function loadUser() {
-      try {
-        const locationUrl = location.pathname;
-        if (
-          token &&
-          (locationUrl === "/register" || locationUrl === "/login")
-        ) {
-          navigate("/home");
-        }
-        
-        const { sub }: any = jwtDecode(token);
-        const { data } = await api.get(`/users/${sub}`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-        setUser(data);
-      } catch (error) {
-        localStorage.removeItem("@FHtoken");
-        localStorage.removeItem("@FHid");
-        const currentError = error as AxiosError<string>;
-        toast.error(currentError.response?.data);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadUser();
-  }, []);
 
   async function logIn(formData: ILoginFormData) {
     try {
