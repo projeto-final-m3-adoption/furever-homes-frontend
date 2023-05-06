@@ -4,6 +4,7 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
+import jwtDecode from 'jwt-decode';
 
 export interface IChildren {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ export interface IUserContext {
   logInModal: (formData: ILoginFormData) => Promise<void>;
   tokenId: number;
   token: string;
+  loading: boolean;
 }
 
 export interface IUser {
@@ -48,6 +50,7 @@ export function UserProvider({ children }: IChildren) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
+	const [loading, setLoading] = useState(true);
   const tokenId = Number(localStorage.getItem("@FHid"));
   const token = localStorage.getItem("@FHtoken");
 
@@ -64,12 +67,31 @@ export function UserProvider({ children }: IChildren) {
     }
   };
 
+
   useEffect(() => {
-    const locationUrl = location.pathname;
-    if (token && (locationUrl === "/register" || locationUrl === "/login")) {
-      navigate("/home");
-    }
-  }, []);
+		async function loadUser() {
+			try {
+        const locationUrl = location.pathname;
+        if (token && (locationUrl === "/register" || locationUrl === "/login")) {
+          navigate("/home");
+        }
+        localStorage.removeItem('@FHtoken');
+        localStorage.removeItem('@FHid');
+				const { sub }:any = jwtDecode(token);
+				const { data } = await api.get(`/users/${sub}`, {
+					headers: {
+						authorization: `Bearer ${token}`,
+					},
+				});
+				setUser(data);
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setLoading(false);
+			}
+		}
+		loadUser();
+	}, []);
 
   const logIn = async (formData: ILoginFormData) => {
     try {
@@ -140,6 +162,7 @@ export function UserProvider({ children }: IChildren) {
         logInModal,
         tokenId,
         token,
+        loading,
       }}
     >
       {children}
