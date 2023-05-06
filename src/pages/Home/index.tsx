@@ -15,6 +15,8 @@ import { LoginModal } from "../../components/Modal/LoginModal";
 import { UserContext } from "../../providers/userContext";
 import { AdoptedModal } from "../../components/Modal/AdoptedModal";
 import { RegisterPetModal } from "../../components/Modal/RegisterPetModal";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 export function Home() {
   const { registerPetModal, petDetailsModal, petObject, adoptedModal } =
@@ -35,6 +37,7 @@ export function Home() {
                 alt={"Filtrar por cachorros"}
                 size={"4rem"}
                 id={"dogIcon"}
+                tooltipText="Filtrar cachorros"
               />
               <IconButton
                 button={true}
@@ -42,6 +45,7 @@ export function Home() {
                 alt={"Filtrar por gatos"}
                 size={"4rem"}
                 id={"catIcon"}
+                tooltipText="Filtrar gatos"
               />
               <IconButton
                 button={true}
@@ -49,6 +53,7 @@ export function Home() {
                 alt={"Filtrar por outros"}
                 size={"4rem"}
                 id={"rabbitIcon"}
+                tooltipText="Filtrar outros"
               />
             </div>
             <IconButton
@@ -57,6 +62,7 @@ export function Home() {
               alt={"Resetar filtro"}
               size={"4rem"}
               id={"buttonReset"}
+              tooltipText="Resetar filtro"
             />
           </div>
           <PetList />
@@ -68,6 +74,7 @@ export function Home() {
       {token && petObject ? <PetDetailsModal /> : null}
       {loginModal ? <LoginModal /> : null}
       {adoptedModal ? <AdoptedModal /> : null}
+      <Tooltip anchorSelect=".tooltip" place="bottom" />
     </>
   );
 }
