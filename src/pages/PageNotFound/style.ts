@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledPageNotFound = styled.main`
-  min-height: calc(100vh-1.25rem-1.25rem);
+  height: 100vh;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;

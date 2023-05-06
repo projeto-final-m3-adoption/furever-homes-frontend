@@ -29,6 +29,7 @@ export const StyledSelectContainer = styled.div`
     padding: 0.875rem;
     display: flex;
     align-items: center;
+
     :focus-within {
       border: 1px solid var(--grey-4);
       color: var(--grey-6);
@@ -37,6 +38,7 @@ export const StyledSelectContainer = styled.div`
 
   @media (min-width: 768.1px) {
     gap: 0.5rem;
+
     .label {
       font-size: 1rem;
       padding-left: 0.75rem;

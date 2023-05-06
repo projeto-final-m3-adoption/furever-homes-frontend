@@ -22,12 +22,14 @@ export const StyledPetList = styled.ul`
   ::-webkit-scrollbar {
     background: transparent;
   }
+
   ::-webkit-scrollbar-thumb {
     height: 0.875rem;
     min-width: 5rem;
     border-radius: var(--radius-20);
     background-color: var(--primary);
   }
+
   ::-webkit-scrollbar-track {
     margin-right: 1.5rem;
     margin-left: 1.5rem;
@@ -51,11 +53,13 @@ export const StyledPetList = styled.ul`
       margin-right: 0;
     }
   }
+
   @media (min-width: 1240px) {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 2.25rem;
     grid-row-gap: 2.75rem;
   }
+
   @media (min-width: 1580px) {
     grid-template-columns: repeat(4, 1fr);
   }

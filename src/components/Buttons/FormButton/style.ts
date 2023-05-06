@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledFormButton = styled.button`
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -64,6 +64,7 @@ export function UserProvider({ children }: IChildren) {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
+      console.log(error);
     }
   };
 
@@ -79,6 +80,7 @@ export function UserProvider({ children }: IChildren) {
         }
         localStorage.removeItem("@FHtoken");
         localStorage.removeItem("@FHid");
+
         const { sub }: any = jwtDecode(token);
         const { data } = await api.get(`/users/${sub}`, {
           headers: {
@@ -87,6 +89,8 @@ export function UserProvider({ children }: IChildren) {
         });
         setUser(data);
       } catch (error) {
+        const currentError = error as AxiosError<string>;
+        toast.error(currentError.response?.data);
         console.log(error);
       } finally {
         setLoading(false);
@@ -115,6 +119,7 @@ export function UserProvider({ children }: IChildren) {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
+      console.log(error);
     }
   };
 
@@ -137,18 +142,21 @@ export function UserProvider({ children }: IChildren) {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
+      console.log(error);
     }
   };
 
-  const logOut = () => {
+  function logOut() {
     localStorage.removeItem("@FHtoken");
     localStorage.removeItem("@FHid");
     setUser(null);
     toast.success("Deslogado com sucesso");
     navigate("/");
-  };
+  }
 
-  const closeLoginModal = () => setLoginModal(false);
+  function closeLoginModal() {
+    setLoginModal(false);
+  }
 
   return (
     <UserContext.Provider

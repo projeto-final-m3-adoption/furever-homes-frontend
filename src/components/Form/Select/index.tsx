@@ -8,7 +8,7 @@ export interface ISelectComponentProps
   error: string | undefined;
 }
 
-function SelectComponent(
+export function SelectComponent(
   { id, label, error, ...rest }: ISelectComponentProps,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
@@ -73,4 +73,5 @@ function SelectComponent(
     </StyledSelectContainer>
   ) : null;
 }
+
 export const Select = forwardRef(SelectComponent);

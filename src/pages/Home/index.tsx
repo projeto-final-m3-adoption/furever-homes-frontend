@@ -21,6 +21,7 @@ import "react-tooltip/dist/react-tooltip.css";
 export function Home() {
   const { registerPetModal, petDetailsModal, petObject, adoptedModal } =
     useContext(petContext);
+
   const { loginModal, token } = useContext(UserContext);
 
   return (

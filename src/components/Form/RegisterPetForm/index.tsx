@@ -75,7 +75,7 @@ export function RegisterNewPetForm() {
           id="img"
           label="Imagem"
           type="url"
-          placeholder="Coloque a url da imagem do seu pet"
+          placeholder="Coloque a url da foto do seu pet"
           error={errors.img?.message}
           {...register("img")}
         />
@@ -95,7 +95,7 @@ export function RegisterNewPetForm() {
             className="regularInput"
             id="description"
             wrap="soft"
-            placeholder="Nos dê bastante detalhes sobre seu pet aqui para conseguirmos achar uma nova casa para ele!"
+            placeholder="Nos dê bastante detalhes sobre seu pet aqui para conseguirmos achar um novo lar para ele!"
             {...register("description")}
           />
           <p className="inputError">{errors.description?.message}</p>

@@ -33,6 +33,7 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
       top: 1.25rem;
       right: 1.25rem;
       z-index: 999;
+
       img {
         width: 0.75rem;
       }
@@ -106,9 +107,11 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
         color: inherit;
         font-weight: bold;
         font-size: 1.125rem;
+
         :disabled {
           cursor: default;
         }
+
         :not(:disabled):hover {
           -webkit-animation: tracking-in-contract 0.8s
             cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -132,6 +135,7 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
       opacity: 1;
     }
   }
+
   @keyframes tracking-in-contract {
     0% {
       letter-spacing: 1em;

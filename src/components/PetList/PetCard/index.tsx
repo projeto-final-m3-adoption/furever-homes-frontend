@@ -9,10 +9,9 @@ export interface IPetCardProps {
 }
 
 export function PetCard({ pet, index }: IPetCardProps) {
-  const { setPetDetailsModal, setPetObject } =
-    useContext(petContext);
+  const { setPetDetailsModal, setPetObject } = useContext(petContext);
 
-  const setColor = (id: number) => {
+  function setColor(id: number) {
     const colors = [
       "pet-container-salmon",
       "pet-container-purple",
@@ -22,7 +21,7 @@ export function PetCard({ pet, index }: IPetCardProps) {
       "pet-container-yellow",
     ];
     return colors[id % colors.length];
-  };
+  }
 
   return (
     <StyledPetCard

@@ -29,6 +29,7 @@ export const StyledHome = styled.main`
       align-items: center;
       padding-right: 1.25rem;
       padding-left: 1.25rem;
+
       .petListFilters {
         display: flex;
         justify-content: space-between;

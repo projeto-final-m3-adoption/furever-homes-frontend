@@ -15,9 +15,10 @@ export function PetDetailsModal() {
     adoptPet,
     setPetDetailsModal,
   } = useContext(petContext);
+
   const { token, setLoginModal, tokenId } = useContext(UserContext);
 
-  const setColor = (id: number) => {
+  function setColor(id: number) {
     const colors = [
       "pet-container-salmon",
       "pet-container-purple",
@@ -27,9 +28,10 @@ export function PetDetailsModal() {
       "pet-container-yellow",
     ];
     return colors[id % colors.length];
-  };
+  }
 
   let color = "";
+
   for (let index = 0; index < petFull.length; index++) {
     if (petFull[index].id === petObject?.id) {
       color = setColor(index);

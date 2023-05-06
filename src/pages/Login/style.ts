@@ -20,6 +20,7 @@ export const StyledLoginPage = styled.main`
     .pageTitle > big {
       font-family: "Fredericka the Great", cursive;
       font-size: 2.5rem;
+
       big {
         color: var(--secondary);
       }

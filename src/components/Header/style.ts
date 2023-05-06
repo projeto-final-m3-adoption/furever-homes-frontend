@@ -57,6 +57,7 @@ export const StyledHeader = styled.header`
       }
     }
   }
+
   .mobileSearchContainer {
     display: flex;
     justify-content: space-between;
@@ -127,12 +128,14 @@ export const StyledHeader = styled.header`
 
           .inputSearchContainer {
             display: none;
+
             input {
               background-color: inherit;
               height: 100%;
               width: 100%;
               display: flex;
               align-items: center;
+
               ::placeholder {
                 color: var(--grey-3);
               }
@@ -142,6 +145,7 @@ export const StyledHeader = styled.header`
               background-color: inherit;
             }
           }
+
           :focus-within,
           :hover {
             .inputSearchContainer {
@@ -157,21 +161,25 @@ export const StyledHeader = styled.header`
 
               :focus-within {
                 border: 1px solid var(--grey-4);
+
                 input::placeholder {
                   color: var(--grey-6);
                 }
               }
             }
+
             #searchIcon {
               display: none;
             }
           }
         }
       }
+
       .dropdownMenuOptions {
         #menuButton {
           display: none;
         }
+
         flex-direction: row;
         justify-content: center;
         gap: 0;
@@ -188,6 +196,7 @@ export const StyledHeader = styled.header`
         }
       }
     }
+
     .mobileSearchContainer {
       display: none;
     }

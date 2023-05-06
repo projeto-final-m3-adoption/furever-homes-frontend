@@ -38,6 +38,7 @@ export const StyledInputContainer = styled.div`
 
     :focus-within {
       border: 1px solid var(--grey-4);
+
       ::placeholder,
       input::placeholder {
         color: var(--grey-6);
@@ -50,6 +51,7 @@ export const StyledInputContainer = styled.div`
       height: 100%;
       width: 100%;
     }
+
     img:hover {
       filter: brightness(0.6);
       cursor: pointer;
@@ -58,6 +60,7 @@ export const StyledInputContainer = styled.div`
 
   @media (min-width: 768.1px) {
     gap: 0.5rem;
+
     .label {
       font-size: 1rem;
       padding-left: 0.75rem;

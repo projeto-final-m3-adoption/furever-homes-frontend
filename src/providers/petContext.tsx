@@ -3,6 +3,7 @@ import { api } from "../services/api";
 import { Outlet } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 export interface IIPet {
   name: string;
@@ -18,7 +19,7 @@ export interface IIPet {
   id: any;
 }
 
-interface IIPetFull {
+export interface IIPetFull {
   petFull: IIPet[];
   setPetFull: React.Dispatch<React.SetStateAction<IIPet[]>>;
   loadPets: () => void;
@@ -75,6 +76,8 @@ export function PetProvider() {
       const response = await api.get("/pet");
       setPetFull(response.data.reverse());
     } catch (error) {
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
       console.log(error);
     }
   }
@@ -95,6 +98,8 @@ export function PetProvider() {
       setRegisterPetModal(false);
       toast.success("Pet cadastrado com sucesso!");
     } catch (error) {
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
       console.log(error);
     }
   };
@@ -107,6 +112,7 @@ export function PetProvider() {
         pet.name.toLowerCase().includes(textSearch.toLowerCase()) ||
         pet.age.toLowerCase().includes(textSearch.toLowerCase())
     );
+
     petsFilter.length === 0
       ? toast.error("Nenhum pet encontrado")
       : setPetsSearchFilter(petsFilter);
@@ -154,6 +160,8 @@ export function PetProvider() {
       openAdoptedModal();
       loadPets();
     } catch (error) {
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
       console.log(error);
     }
   }

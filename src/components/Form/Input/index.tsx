@@ -9,7 +9,7 @@ export interface IInputComponentProps
   Eye?: string;
 }
 
-function InputComponent(
+export function InputComponent(
   { id, label, error, Eye, ...rest }: IInputComponentProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
@@ -43,4 +43,5 @@ function InputComponent(
     </StyledInputContainer>
   );
 }
+
 export const Input = forwardRef(InputComponent);
