@@ -34,6 +34,7 @@ export function LoginModal() {
             size={"2.5rem"}
             button={true}
             id={"closeIcon"}
+            tooltipText="Fechar"
           />
         </span>
         <form onSubmit={handleSubmit(logInModal)}>

@@ -106,7 +106,7 @@ export const StyledPetModal = styled.div<IStyledPetModal>`
         color: inherit;
         font-weight: bold;
         font-size: 1.125rem;
-        :disabled{
+        :disabled {
           cursor: default;
         }
         :not(:disabled):hover {
