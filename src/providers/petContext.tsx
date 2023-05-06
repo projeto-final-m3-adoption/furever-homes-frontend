@@ -86,9 +86,7 @@ export function PetProvider() {
     loadPets();
   }, []);
 
-  const createNewPet: SubmitHandler<IRegisterNewPetFormData> = async (
-    formData
-  ) => {
+  async function createNewPet(formData: IRegisterNewPetFormData) {
     const userId = Number(localStorage.getItem("@FHid"));
     const newFormData = { ...formData, isAdopted: false, userId: userId };
 
@@ -102,7 +100,7 @@ export function PetProvider() {
       toast.error(currentError.response?.data);
       console.log(error);
     }
-  };
+  }
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault();

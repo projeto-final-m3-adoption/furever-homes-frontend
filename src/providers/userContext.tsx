@@ -54,7 +54,7 @@ export function UserProvider({ children }: IChildren) {
   const tokenId = Number(localStorage.getItem("@FHid"));
   const token = localStorage.getItem("@FHtoken");
 
-  const createUser: SubmitHandler<IRegisterFormData> = async (formData) => {
+  async function createUser(formData: IRegisterFormData) {
     delete formData.confirm;
 
     try {
@@ -66,7 +66,7 @@ export function UserProvider({ children }: IChildren) {
       toast.error(currentError.response?.data);
       console.log(error);
     }
-  };
+  }
 
   useEffect(() => {
     async function loadUser() {
@@ -99,7 +99,7 @@ export function UserProvider({ children }: IChildren) {
     loadUser();
   }, []);
 
-  const logIn = async (formData: ILoginFormData) => {
+  async function logIn(formData: ILoginFormData) {
     try {
       const response = await api.post("/login", formData);
       if (response.data.accessToken) {
@@ -121,9 +121,9 @@ export function UserProvider({ children }: IChildren) {
       toast.error(currentError.response?.data);
       console.log(error);
     }
-  };
+  }
 
-  const logInModal = async (formData: ILoginFormData) => {
+  async function logInModal(formData: ILoginFormData) {
     try {
       const response = await api.post("/login", formData);
       if (response.data.accessToken) {
@@ -144,7 +144,7 @@ export function UserProvider({ children }: IChildren) {
       toast.error(currentError.response?.data);
       console.log(error);
     }
-  };
+  }
 
   function logOut() {
     localStorage.removeItem("@FHtoken");
