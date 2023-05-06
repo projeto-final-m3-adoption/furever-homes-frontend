@@ -32,6 +32,7 @@ export function RegisterForm() {
           size="3.125rem"
           button={false}
           id="1"
+          tooltipText="Página inicial"
         />
       </span>
       <form onSubmit={handleSubmit(createUser)}>

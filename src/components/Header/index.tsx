@@ -48,6 +48,7 @@ export function Header() {
                 img={SearchIcon}
                 alt={"Pesquisar"}
                 size={"4rem"}
+                tooltipText="Pesquisar"
               />
             </div>
             <div className="dropdownMenuOptions">
@@ -57,6 +58,7 @@ export function Header() {
                 img={MenuIcon}
                 alt={"Abrir menu"}
                 size={"2.5rem"}
+                tooltipText="Menu"
               />
               <div className="menuButtonOptions">
                 {!token ? (
@@ -67,6 +69,7 @@ export function Header() {
                       img={RegisterIcon}
                       alt={"Registro"}
                       size={"4rem"}
+                      tooltipText="Cadastre-se"
                     />
                     <IconButton
                       id="loginButton"
@@ -74,6 +77,7 @@ export function Header() {
                       img={LoginIcon}
                       alt={"Login"}
                       size={"4rem"}
+                      tooltipText="Entrar"
                     />
                   </>
                 ) : (
@@ -84,6 +88,7 @@ export function Header() {
                       img={RegisterPetIcon}
                       alt={"Cadastrar pet"}
                       size={"4rem"}
+                      tooltipText="Colocar pet para adoção"
                     />
                     <IconButton
                       id="logoutButton"
@@ -91,6 +96,7 @@ export function Header() {
                       img={LogoutIcon}
                       alt={"Logout"}
                       size={"4rem"}
+                      tooltipText="Sair"
                     />
                   </>
                 )}
@@ -106,7 +112,12 @@ export function Header() {
             onChange={(event) => setTextSearch(event.target.value)}
           />
           <button type="submit">
-            <img src={SearchInput} alt="Pesquisar" />
+            <img
+              src={SearchInput}
+              alt="Pesquisar"
+              className="tooltip"
+              data-tooltip-content="Pesquisar"
+            />
           </button>
         </form>
       </StyledHeader>

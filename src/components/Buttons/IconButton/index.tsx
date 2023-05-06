@@ -11,9 +11,17 @@ export interface IIconButtonProps {
   img: string;
   alt: string;
   size: string;
+  tooltipText?: string;
 }
 
-export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
+export function IconButton({
+  button,
+  img,
+  alt,
+  size,
+  id,
+  tooltipText,
+}: IIconButtonProps) {
   const { logOut, setLoginModal } = useContext(UserContext);
   const { filterButtons, setRegisterPetModal } = useContext(petContext);
 
@@ -42,31 +50,37 @@ export function IconButton({ button, img, alt, size, id }: IIconButtonProps) {
 
   return (
     <>
-    <StyledIconButton size={size} className="roundButtonContainer">
-      {button ? (
-        <button
-          className="roundButton"
-          id={id}
-          onClick={() => {
-            onButtonClick(alt);
-          }}
-        >
-          <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
-        </button>
-      ) : (
-        <StyledLink
-          to={
-            alt === "Registro" ? "/register" : alt === "Login" ? "/login" : "/"
-          }
-          className="roundButton"
-          id={id}
-          size={size}
-        >
-          <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
-        </StyledLink>
-      )}
-    </StyledIconButton>
-    <Tooltip anchorSelect=".tooltip" place="bottom" />
+      <StyledIconButton size={size} className="roundButtonContainer">
+        {button ? (
+          <button
+            className="roundButton tooltip"
+            id={id}
+            onClick={() => {
+              onButtonClick(alt);
+            }}
+            data-tooltip-content={tooltipText}
+          >
+            <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
+          </button>
+        ) : (
+          <StyledLink
+            to={
+              alt === "Registro"
+                ? "/register"
+                : alt === "Login"
+                ? "/login"
+                : "/"
+            }
+            className="roundButton tooltip"
+            id={id}
+            size={size}
+            data-tooltip-content={tooltipText}
+          >
+            <img className="iconBtnImg" src={img} alt={alt} aria-label={alt} />
+          </StyledLink>
+        )}
+      </StyledIconButton>
+      <Tooltip id={id} anchorSelect=".tooltip" place="bottom" />
     </>
   );
 }
