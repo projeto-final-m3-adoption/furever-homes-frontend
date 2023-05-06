@@ -18,8 +18,8 @@ export function Header() {
   const { setTextSearch, submitSearch, textSearch } = useContext(petContext);
 
   if (loading) {
-		return;
-	}
+    return;
+  }
 
   return (
     <>
