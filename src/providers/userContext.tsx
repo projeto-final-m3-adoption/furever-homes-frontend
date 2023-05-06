@@ -4,7 +4,6 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
-import jwtDecode from "jwt-decode";
 
 export interface IChildren {
   children: React.ReactNode;
@@ -52,36 +51,35 @@ export function UserProvider({ children }: IChildren) {
   const [loginModal, setLoginModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const tokenId = Number(localStorage.getItem("@FHid"));
-  const token = localStorage.getItem("@FHtoken");
+  const token = JSON.parse(localStorage.getItem("@FHtoken"));
 
   async function loadUser() {
-		try {
-			const { sub }: any = jwtDecode(token);
-			const { data } = await api.get(`/users/${sub}`, {
-				headers: {
-					authorization: `Bearer ${token}`,
-				},
-			});
-			setUser(data);
-		} catch (error) {
-			setUser(null);
-			localStorage.removeItem("@FHtoken");
-			localStorage.removeItem("@FHid");
-			const currentError = error as AxiosError<string>;
-			toast.error(currentError.response?.data);
-			console.log(error);
-		} finally {
-			setLoading(false);
-		}
-	}
+    try {
+      const { data } = await api.get(`/users/${tokenId}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(data);
+    } catch (error) {
+      setUser(null);
+      localStorage.removeItem("@FHtoken");
+      localStorage.removeItem("@FHid");
+      const currentError = error as AxiosError<string>;
+      toast.error(currentError.response?.data);
+      navigate("/");
+    } finally {
+      setLoading(false);
+    }
+  }
 
-useEffect(() => {
-	const locationUrl = location.pathname;
-	if (token && (locationUrl === "/register" || locationUrl === "/login")) {
-		navigate("/home");
-	}
-	token ? loadUser() : setLoading(false);
-}, []);
+  useEffect(() => {
+    const locationUrl = location.pathname;
+    if (token && (locationUrl === "/register" || locationUrl === "/login")) {
+      navigate("/home");
+    }
+    token ? loadUser() : setLoading(false);
+  }, []);
 
   async function createUser(formData: IRegisterFormData) {
     delete formData.confirm;
