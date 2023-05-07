@@ -18,10 +18,13 @@ export function LoginModal() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, dirtyFields, isSubmitting },
   } = useForm<ILoginFormData>({
+    defaultValues: { email: '', password: '' },
     resolver: zodResolver(loginSchema),
   });
+
+  const emptyInputs = Object.values(dirtyFields).length < 2 ? true : false;
 
   return (
     <StyledLoginModal>
@@ -55,7 +58,10 @@ export function LoginModal() {
             {...register("password")}
             error={errors.password?.message}
           />
-          <FormButton text="Login" />
+          <FormButton 
+          text="Login"
+          disabled={isSubmitting || emptyInputs}
+           />
         </form>
         <span className="formFooter">
           <p>Ainda não tem conta?</p>
