@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { api } from "../services/api";
 import { Outlet } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./userContext";
 
 export interface IIPet {
   name: string;
@@ -71,8 +72,8 @@ export function PetProvider() {
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
   const [adoptedModal, setAdoptedModal] = useState(false);
-  const token = JSON.parse(localStorage.getItem("@FHtoken"));
-  const navigate = useNavigate();
+	const { token } = useContext(UserContext);
+	const navigate = useNavigate();
 
   async function loadPets() {
     try {
