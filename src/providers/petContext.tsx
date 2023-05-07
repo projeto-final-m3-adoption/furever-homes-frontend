@@ -71,8 +71,7 @@ export function PetProvider() {
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
   const [adoptedModal, setAdoptedModal] = useState(false);
-  const token = JSON.parse(localStorage.getItem("@FHtoken"));
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
   async function loadPets() {
     try {
@@ -90,6 +89,15 @@ export function PetProvider() {
   }, []);
 
   async function createNewPet(formData: IRegisterNewPetFormData) {
+    const token = isJsonString(localStorage.getItem("@FHtoken"));
+    function isJsonString(str: string) {
+      try {
+        JSON.parse(str);
+      } catch (error) {
+        return str;
+      }
+      return JSON.parse(str);
+    }
     const userId = Number(localStorage.getItem("@FHid"));
     const newFormData = { ...formData, isAdopted: false, userId: userId };
 
@@ -150,9 +158,14 @@ export function PetProvider() {
   }
 
   async function adoptPet(petId: number | string | undefined | null) {
-    let token = localStorage.getItem("@FHtoken");
-    if (token) {
-      token = JSON.parse(token);
+    const token = isJsonString(localStorage.getItem("@FHtoken"));
+    function isJsonString(str: string) {
+      try {
+        JSON.parse(str);
+      } catch (error) {
+        return str;
+      }
+      return JSON.parse(str);
     }
     try {
       await api.patch(

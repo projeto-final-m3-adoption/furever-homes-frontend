@@ -50,7 +50,15 @@ export function UserProvider({ children }: IChildren) {
   const [loginModal, setLoginModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const tokenId = Number(localStorage.getItem("@FHid"));
-  const token = JSON.parse(localStorage.getItem("@FHtoken"));
+  const token = isJsonString(localStorage.getItem("@FHtoken"));
+  function isJsonString(str: string) {
+    try {
+      JSON.parse(str);
+    } catch (error) {
+      return str;
+    }
+    return JSON.parse(str);
+  }
 
   async function loadUser() {
     try {
