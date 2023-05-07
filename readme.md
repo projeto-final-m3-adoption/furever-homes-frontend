@@ -47,7 +47,8 @@ Já neste <a href="https://github.com/projeto-final-m3-adoption/furever-homes-ba
 
 ## 🛠️ Abrir e rodar o projeto
 
-Para abrir e rodar o projeto, basta clicar no link do <a href="#" target="_blank">vercel</a>;
+Para abrir o projeto, basta clonar o repositório e digitar o comando `npm install` no terminal, para instalar os pacotes do projeto;
+Para rodar o projeto, bastar digitar o comando `npm run dev` no terminal, e navegar para o local host especificado;
 
 ## 👩‍💻 Pessoas desenvolvedoras do projeto
 
