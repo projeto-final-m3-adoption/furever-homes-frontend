@@ -58,7 +58,6 @@ export function Header() {
                 img={MenuIcon}
                 alt={"Abrir menu"}
                 size={"2.5rem"}
-                tooltipText="Menu"
               />
               <div className="menuButtonOptions">
                 {!token ? (
