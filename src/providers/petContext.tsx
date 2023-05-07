@@ -71,7 +71,7 @@ export function PetProvider() {
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
   const [adoptedModal, setAdoptedModal] = useState(false);
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
   async function loadPets() {
     try {
