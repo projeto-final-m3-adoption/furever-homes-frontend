@@ -7,7 +7,12 @@ export interface IFormButtonProps {
   disabled: boolean;
 }
 
-export function FormButton({ text, id, customClass, disabled }: IFormButtonProps) {
+export function FormButton({
+  text,
+  id,
+  customClass,
+  disabled,
+}: IFormButtonProps) {
   return (
     <StyledFormButton id={id} disabled={disabled}>
       <span className={customClass}>{text}</span>

@@ -19,11 +19,11 @@ export function RegisterForm() {
     handleSubmit,
     formState: { errors, dirtyFields, isSubmitting },
   } = useForm<IRegisterFormData>({
-    defaultValues: { name: '', email: '', password: '', confirm: '' },
+    defaultValues: { name: "", email: "", password: "", confirm: "" },
     resolver: zodResolver(registerFormSchema),
   });
 
-	const emptyInputs = Object.values(dirtyFields).length < 4 ? true : false;
+  const emptyInputs = Object.values(dirtyFields).length < 4 ? true : false;
 
   return (
     <StyledForm className="formContainer">
@@ -73,10 +73,7 @@ export function RegisterForm() {
           error={errors.confirm?.message}
           {...register("confirm")}
         />
-        <FormButton
-        disabled={emptyInputs || isSubmitting}
-         text="Cadastre-se"
-         />
+        <FormButton disabled={emptyInputs || isSubmitting} text="Cadastre-se" />
       </form>
       <span className="formFooter">
         <p>Já tem uma conta?</p>

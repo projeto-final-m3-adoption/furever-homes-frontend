@@ -20,7 +20,7 @@ export function LoginModal() {
     handleSubmit,
     formState: { errors, dirtyFields, isSubmitting },
   } = useForm<ILoginFormData>({
-    defaultValues: { email: '', password: '' },
+    defaultValues: { email: "", password: "" },
     resolver: zodResolver(loginSchema),
   });
 
@@ -58,10 +58,7 @@ export function LoginModal() {
             {...register("password")}
             error={errors.password?.message}
           />
-          <FormButton 
-          text="Login"
-          disabled={isSubmitting || emptyInputs}
-           />
+          <FormButton text="Login" disabled={isSubmitting || emptyInputs} />
         </form>
         <span className="formFooter">
           <p>Ainda não tem conta?</p>
