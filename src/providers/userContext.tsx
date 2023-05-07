@@ -98,7 +98,6 @@ export function UserProvider({ children }: IChildren) {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
-      console.log(error);
     }
   }
 
@@ -122,7 +121,6 @@ export function UserProvider({ children }: IChildren) {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
-      console.log(error);
     }
   }
 
@@ -145,7 +143,6 @@ export function UserProvider({ children }: IChildren) {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
-      console.log(error);
     }
   }
 

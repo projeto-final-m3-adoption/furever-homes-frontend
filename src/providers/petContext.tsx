@@ -80,7 +80,6 @@ export function PetProvider() {
     } catch (error) {
       const currentError = error as AxiosError<string>;
       toast.error(currentError.response?.data);
-      console.log(error);
     }
   }
 
@@ -118,7 +117,6 @@ export function PetProvider() {
         localStorage.removeItem("@FHid");
         navigate("/");
       }
-      console.log(error);
     }
   }
 
@@ -190,7 +188,6 @@ export function PetProvider() {
         localStorage.removeItem("@FHid");
         navigate("/");
       }
-      console.log(error);
     }
   }
 
