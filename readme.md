@@ -2,7 +2,7 @@
 
 A FurEver Homes é um espaço onde pessoas que resgatam animais de rua conseguem ajudar esses animais à encontrar um novo lar, ao mesmo tempo que pessoas procurando um novo bichinho podem vir e encontrar seu novo pet, tudo em um único lugar.
 
-<img src="./src/assets/FureverHomesScreenshot.jpg" alt="Imagem da home page da FurEver Homes" width="50%">
+<img src="./src/assets/FureverHomesScreenshot.jpg" alt="Imagem da home page da FurEver Homes" width="100%">
 
 ## 🔨 Funcionalidades do projeto
 
