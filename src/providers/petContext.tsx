@@ -1,11 +1,10 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { Outlet } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "./userContext";
 
 export interface IIPet {
   name: string;
@@ -72,7 +71,6 @@ export function PetProvider() {
   const [petDetailsModal, setPetDetailsModal] = useState(false);
   const [petObject, setPetObject] = useState<IIPet | null>();
   const [adoptedModal, setAdoptedModal] = useState(false);
-	const { token } = useContext(UserContext);
 	const navigate = useNavigate();
 
   async function loadPets() {
@@ -91,6 +89,15 @@ export function PetProvider() {
   }, []);
 
   async function createNewPet(formData: IRegisterNewPetFormData) {
+    const token = isJsonString(localStorage.getItem("@FHtoken"));
+    function isJsonString(str: string) {
+      try {
+        JSON.parse(str);
+      } catch (error) {
+        return str;
+      }
+      return JSON.parse(str);
+    }
     const userId = Number(localStorage.getItem("@FHid"));
     const newFormData = { ...formData, isAdopted: false, userId: userId };
 
@@ -151,9 +158,14 @@ export function PetProvider() {
   }
 
   async function adoptPet(petId: number | string | undefined | null) {
-    let token = localStorage.getItem("@FHtoken");
-    if (token) {
-      token = JSON.parse(token);
+    const token = isJsonString(localStorage.getItem("@FHtoken"));
+    function isJsonString(str: string) {
+      try {
+        JSON.parse(str);
+      } catch (error) {
+        return str;
+      }
+      return JSON.parse(str);
     }
     try {
       await api.patch(
