@@ -23,7 +23,7 @@ export const StyledFormButton = styled.button`
 
   :disabled {
     background-color: var(--primary);
-    filter: brightness(0.8);
+    filter: brightness(0.85);
     cursor: default;
   }
 

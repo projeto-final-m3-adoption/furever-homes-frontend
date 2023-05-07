@@ -1,4 +1,3 @@
-// import { ButtonHTMLAttributes } from "react";
 import { StyledFormButton } from "./style";
 
 export interface IFormButtonProps {
