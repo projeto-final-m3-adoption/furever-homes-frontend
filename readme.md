@@ -1,12 +1,12 @@
 # FUREVER HOMES
 
-A FurEver Homes é um espaço onde pessoas que resgatam animais de rua conseguem ajudar esses animais à encontrar um novo lar, ao mesmo tempo que pessoas procurando um novo bichinho podem vir e encontrar seu novo pet, tudo em um único lugar.
+A Furever Homes é um espaço onde pessoas que resgatam animais de rua conseguem ajudar esses animais à encontrar um novo lar, ao mesmo tempo que pessoas procurando um novo bichinho podem vir e encontrar seu novo pet, tudo em um único lugar.
 
-<img src="./src/assets/FureverHomesScreenshot.jpg" alt="Imagem da home page da FurEver Homes" width="100%">
+<img src="./src/assets/FureverHomesScreenshot.jpg" alt="Imagem da home page da Furever Homes" width="100%">
 
 ## 🔨 Funcionalidades do projeto
 
-A FurEver Homes possui quatro páginas. Sua página principal é a home, onde a lista de pets e a maiorias das funcionalidades se encontram.
+A Furever Homes possui quatro páginas. Sua página principal é a home, onde a lista de pets e a maiorias das funcionalidades se encontram.
 
 ### Login
 
@@ -55,7 +55,7 @@ Em andamento.
 
 ## 📁 Acesso ao projeto
 
-[Veja o site FurEver Homes em funcionamento](LINKPARAVERCELAQUI).
+[Veja o site Furever Homes em funcionamento](LINKPARAVERCELAQUI).
 
 Neste repositório você tem acesso a todos os arquivos e códigos da aplicação.<br/>
 Já neste <a href="https://github.com/projeto-final-m3-adoption/furever-homes-backend" target="_blank">repositório</a> você tem acesso a todos os arquivos da fake API utilizada.

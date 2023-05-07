@@ -20,6 +20,10 @@ export const StyledFooter = styled.footer`
   .footer-paragraph > a {
     text-decoration: none;
     color: var(--grey-6);
+
+    :hover {
+      color: var(--secondary);
+    }
   }
 
   .footer-heart {
